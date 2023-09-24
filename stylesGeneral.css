@@ -32,3 +32,7 @@ nav {
     display: flex;
     justify-content: center; /* horizontal center */
 }
+
+h3 {
+    margin-left: .5rem;
+}
