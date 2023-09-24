@@ -29,5 +29,50 @@
         Choices
       </h3>
     </main>
+
+    <div class="container">
+        <form id="choice-form">
+            <label for="radio-option">Select an option:</label>
+            <input type="radio" id="radio-option1" name="choice" value="Option 1">
+            <label for="radio-option1">Option 1</label>
+            <input type="radio" id="radio-option2" name="choice" value="Option 2">
+            <label for="radio-option2">Option 2</label>
+
+            <br><br><br>
+
+            <label for="dropdown-option">Select another option:</label>
+            <select id="dropdown-option" name="dropdown">
+                <option value="Option A">Option A</option>
+                <option value="Option B">Option B</option>
+                <option value="Option C">Option C</option>
+            </select>
+
+            <br><br><br>
+
+            <button type="button" id="show-result">Show Result</button>
+        </form>
+
+        <div id="result">
+            <p>Your choices are:</p>
+            <p><span id="radio-choice"></span></p>
+            <p><span id="dropdown-choice"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("show-result").addEventListener("click", function() {
+            const radioChoice = document.querySelector('input[name="choice"]:checked');
+            const dropdownChoice = document.getElementById("dropdown-option").value;
+            
+            if (radioChoice) {
+                document.getElementById("radio-choice").textContent = "Radio Choice: " + radioChoice.value;
+            } else {
+                document.getElementById("radio-choice").textContent = "Radio Choice: Not selected";
+            }
+            
+            document.getElementById("dropdown-choice").textContent = "Dropdown Choice: " + dropdownChoice;
+            document.getElementById("result").style.display = "block";
+        });
+    </script>
   </body>
 </html>
