@@ -1,0 +1,58 @@
+/*profile specific*/
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+img {
+    width: 150px; 
+    height: 150px; 
+}
+
+.circle {       /*container for circle image*/
+    width: 150px; /* diameter */
+    height: 150px; /* diameter */
+    background-color: white;
+    border-radius: 50%; /* circular shape */
+    overflow: hidden; /* hide stuff outside the circle */
+    margin-top: 30px;
+}
+
+.circle img {
+    width: 100%; /* Make the image width equal to the circle's diameter */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove any extra space around the image */
+}
+
+
+/*notification box*/ 
+.hidden {
+    display: none;
+}
+
+.notification {
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.close-button {
+    float: right;
+    cursor: pointer;
+    margin-right: 10px; /* moves the x button more to the left so it's in the red box */
+}
+
+.notification-content {
+    overflow: hidden;
+    text-align: center; /*center text */
+    line-height: 2; /* vertical centering, making the margins from top of red box bigger */
+    margin-top: 20px;/* space from the name (section group) */    
+    color: white;
+    background-color: red;
+}
+
+

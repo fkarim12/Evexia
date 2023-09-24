@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesGeneral.css" />
+    <link rel="stylesheet" href="stylesProfile.css" />
   </head>
   <body>
     <header>
@@ -23,8 +24,21 @@
         Profile
       </h3>
       
-
+      <section>
+        <img class="circle" id="profilePic" src="penguinProfile.png" alt="Penguin Profile">
+        <p><b>Evan Golub</b></p>  
+      </section>
 
     </main>
-      </body>
+
+    <div id="notification" class="hidden">
+      <div class="notification-content">
+          <span class="close-button" onclick="closeNotification()">&times;</span>
+          <p> <b>Warning! </b>Do not click on the profile image.</p>
+      </div>
+    </div>
+
+    <script src="scriptProfile.js"></script>
+  
+  </body>
 </html>
