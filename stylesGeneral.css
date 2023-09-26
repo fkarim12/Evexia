@@ -25,7 +25,7 @@ ul a {
 ul a.active {
     background-color: lightsteelblue; 
     color: #000;
-}
+}                                                           
 
 /* nav element containing the tabs*/
 nav {
@@ -33,6 +33,6 @@ nav {
     justify-content: center; /* horizontal center */
 }
 
-h3 {
+h1 {
     margin-left: .5rem;
 }
