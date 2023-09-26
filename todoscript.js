@@ -11,7 +11,7 @@ function addItem() {
     newItem.innerHTML = `
         <span>${taskText}</span>
         <button onclick="completeItem(this)">Complete</button>
-        <button onclick="deleteItem(this)">Delete</button> 
+        <button class="btn btn-secondary float-right" onclick="deleteItem(this)">Delete</button> 
     `;
 
     itemList.appendChild(newItem);
