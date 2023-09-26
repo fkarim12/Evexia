@@ -1,0 +1,16 @@
+body{
+    font-family: Georgia, serif;
+}
+
+#div1{
+    background-color: black;
+    color: yellow;
+    margin: auto;
+    text-align: center;
+}
+
+#div2{
+    background-color: yellow;
+    color: purple;
+    text-align: center;
+}
