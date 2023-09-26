@@ -10,7 +10,7 @@ function addItem() {
     var newItem = document.createElement("li");
     newItem.innerHTML = `
         <span>${taskText}</span>
-        <button onclick="completeItem(this)">Complete</button>
+        <button onclick="completeItem(this)">Done</button>
         <button class="btn btn-secondary float-right" onclick="deleteItem(this)">Delete</button> 
     `;
 
