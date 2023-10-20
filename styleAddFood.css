@@ -37,3 +37,10 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #D1E9F3;
 }
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
