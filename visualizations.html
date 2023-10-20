@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
+    <link rel="stylesheet" href="visualizations.css" />
+
   </head>
   <body>
     <main>
-      <h1>
-        Visualizations
-      </h1>
+      <h1>Visualizations</h1>
+      <div class="graph-container">
+        <canvas id="calorie-chart"></canvas>
+        <canvas id="weight-chart"></canvas>
+      </div>
+      <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
     </main>
+    <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+    <script src="visualizations.js"></script>
 
     <nav>
         <ul>
