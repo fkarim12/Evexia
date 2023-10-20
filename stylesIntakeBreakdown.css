@@ -1,0 +1,24 @@
+
+.pie-chart {
+    width: 200px;
+    height: 200px;
+    background: conic-gradient(
+      from 0deg,
+      lightcoral 0% 33%,
+      lightgoldenrodyellow 0% 66%,
+      palegreen 0% 100%
+    );
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px
+  }
+  
+  .percentage-display {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
+  

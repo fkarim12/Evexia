@@ -1,16 +1,19 @@
-.edit-button {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; 
+  }
+  
+  .edit-button {
     padding: 10px 20px;
     background-color: skyblue;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px; /* Adjust the margin-top as needed */
-    float: right;
-}
-
-
-
+  }
+  
 /*profile specific*/
 section {
     display: flex;
