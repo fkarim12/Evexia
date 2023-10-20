@@ -1,10 +1,22 @@
-header {
+body {
     display: flex;
-    justify-content: center; /* horizontal */
-    align-items: center; /* vertical */
-    height: 45; /* Adjust the height as needed */
-}
-
+    flex-direction: column;
+    min-height: 93vh;
+  }
+  
+  main {
+    flex: 1;
+    padding: 10px;
+  }
+  
+/* space out tabs evenly across screen*/
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 0;
+  }
+  
 /* containing the tabs */
 ul {
     list-style-type: none;
@@ -26,12 +38,6 @@ ul a.active {
     background-color: lightsteelblue; 
     color: #000;
 }                                                           
-
-/* nav element containing the tabs*/
-nav {
-    display: flex;
-    justify-content: center; /* horizontal center */
-}
 
 h1 {
     margin-left: .5rem;
