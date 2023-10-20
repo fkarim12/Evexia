@@ -6,14 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
+    <link rel="stylesheet" href="sleep.css">
   </head>
   <body>
     <main>
-      <h1>
-        Sleep Tracker
-      </h1>
-    </main>
+      <div class="container">
+        <h1>Sleep Log This Week</h1>
+        <canvas id="sleepChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="sleep.js"></script>
 
+      <label id = "dateLabel" for="date">Enter New Sleep Data: </label>
+      <button id = "enter" type="button">Enter</button>
+      <br>
+      <input type="text" size="" id="date">
+      <br>
+      <br>
+      <label for="start">Start:</label>
+      <br>
+      <br>
+      <input type="text" size="2" id="start" value="00"> : <input type="text" size="2" id="start" value="00">
+      <select name="startSelect" id="startSelect">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+      </select>
+      <br>
+      <br>
+      <label for="end">End:</label>
+      <br>
+      <br>
+      <input type="text" size="2" value="00" id="end"> : <input type="text" size="2" value="00" id="end">
+      <select name="endSelect" id="endSelect">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+      </select>
+    </main>
     <nav>
         <ul>
           <a href="./index.html">Calorie Tracker</a>
