@@ -1,0 +1,48 @@
+.edit-button {
+    padding: 10px 20px;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Adjust the margin-top as needed */
+    float: right;
+}
+
+
+
+/*profile specific*/
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+img {
+    width: 200px; 
+    height: 200px; 
+}
+
+.circle {       /*container for circle image*/
+    width: 200px; /* diameter */
+    height: 200px; /* diameter */
+    background-color: white;
+    border-radius: 50%; /* circular shape */
+    overflow: hidden; /* hide stuff outside the circle */
+    margin-top: 30px;
+}
+
+.circle img {
+    width: 100%; /* Make the image width equal to the circle's diameter */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove any extra space around the image */
+}
+
+h3 {
+    padding-left: 30px;
+    margin: 10px 0;
+    font-weight: normal; 
+  }
+  
