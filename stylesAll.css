@@ -4,10 +4,10 @@ body {
     min-height: 93vh;
   }
   
-  main {
-    flex: 1;
-    padding: 10px;
-  }
+main {
+  flex: 1;
+  padding: 10px;
+}
   
 /* space out tabs evenly across screen*/
 nav ul {
@@ -41,4 +41,29 @@ ul a.active {
 
 h1 {
     margin-left: .5rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.section {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+.section-label {
+  font-weight: bold;
+}
+table {
+  width: 100%;
+}
+table, th, td {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: center;
 }

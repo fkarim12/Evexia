@@ -6,12 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
+    <link rel="stylesheet" href="styleCalTracker.css" />
   </head>
+
   <body>
     <main>
-      <h1>
-        Calorie Tracker
-      </h1>
+      <div class="container">
+        <h1>Calorie Tracker</h1>
+  
+        <div class="section invisible-lines" style="background-color: #dcd0ff;">
+            <table>
+              <tr>
+                <th>Calories</th>
+                <th>Goal</th>
+                <th>Net</th>
+              </tr>
+              <tr>
+              <td>1520</td>
+              <td>1800</td>
+              <td>-280</td>
+              </tr>
+            </table>
+        </div>
+  
+        <div class="section" style="background-color: #d1e9f3;">
+          <div class="section-title">Breakfast</div>
+          <table class="table invisible-lines" style="background-color: #d1e9f3;">
+            <tr>
+                <td class = "left">Oatmeal</td>
+                <td class = "right">200 cals</td>
+            </tr>
+            <tr>
+              <td class = "left">Eggs</td>
+              <td class = "right">120 cals</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="section" style="background-color: #d1e9f3;">
+          <div class="section-title">Lunch</div>
+          <table class="table invisible-lines" style="background-color: #d1e9f3;">
+            <tr>
+              <td class = "left">Chicken Wrap</td>
+              <td class = "right">350 cals</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="section" style="background-color: #d1e9f3;">
+          <div class="section-title">Dinner</div>
+          <table class="table invisible-lines" style="background-color: #d1e9f3;">
+            <tr>
+              <td class = "left">Steak</td>
+              <td class = "right">500 cals</td>
+            </tr>
+            <tr>
+              <td class = "left">Mashed Potatoes</td>
+              <td class = "right">350 cals</td>
+            </tr>
+          </table>
+        </div>
+
+        <a href="addFood.html" class="add-food-button">Add Food</a>
+        
+      </div>
     </main>
 
     <nav>
