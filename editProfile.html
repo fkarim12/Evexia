@@ -11,26 +11,38 @@
   </head>
   <body>
     <main>
-      <h1>
-        Edit User Profile
-      </h1>
+      <div class="header">
+        <h1>Edit User Profile</h1>
+    </div>
 
-      <button class="edit-button" onclick="window.location.href='editProfile.html'">Edit</button>
-
+      <div class="header">
+        <button class="cancel-button" onclick="window.location.href='userProfile.html'">Cancel</button>
+        <button class="save-button" onclick="window.location.href='userProfile.html'">Save</button>
+      </div>
       <section>
         <img class="circle" id="profilePic" src="1.2/penguinProfile.png" alt="Penguin Profile">
-        <p><b>username_here</b></p>  
+        <p style="font-size: 23px;"><b>username_here</b></p>
       </section>
 
       <h3>
-        <p> Update Name: Evan Golub</p>
-        <p> Update Email: evan.golub@umd.edu</p>
-        <p> Update Age: 50</p>
-        <p> Update Weight: 100</p>
-        <p> Update Goal Weight: 150</p>
-        <p> Update Goals: Gain Weight</p>
-
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" style="width: 81%;"><br>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" style="width: 81%;"><br>
+      
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" style="width: 84%;"><br>
+      
+        <label for="weight">Weight:</label>
+        <input type="number" id="weight" name="weight" style="width: 78.7%;"><br>
+      
+        <label for="goalWeight">Goal Weight:</label>
+        <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;"><br>
+      
+        <label for="goals">Goals:</label>
+        <input type="text" id="goals" name="goals" style="width: 81.3%;"><br>
       </h3>
-
+      
   </body>
 </html>
