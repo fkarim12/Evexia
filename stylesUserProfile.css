@@ -91,16 +91,10 @@ input[type="number"] {
     margin-bottom: 10px; /* Add vertical margin between input elements */
 }
 
-
-.keyboard-image {
+#keyboardImage {
   display: none;
-  position: absolute;
-  bottom: 100%;
+  position: fixed;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
-}
-
-.text-input {
-  width: 80%;
 }

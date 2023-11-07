@@ -28,15 +28,15 @@ function saveProfile() {
     window.location.href = 'userProfile.html';
 }
 
-// Hide the keyboard image when the screen is clicked elsewhere
 document.body.addEventListener('click', function (event) {
     if (event.target.id !== 'keyboardImage') {
         document.getElementById('keyboardImage').style.display = 'none';
     }
 });
 
-// Function to show the keyboard image
-function showKeyboard(imageId) {
+function showKeyboard(event, imageId) {
+    event.stopPropagation(); // Stop the event from propagating to document.body
     var keyboardImage = document.getElementById(imageId);
     keyboardImage.style.display = 'block';
 }
+

@@ -8,15 +8,6 @@
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
     <link rel="stylesheet" href="stylesUserProfile.css" />
-    <style>
-        #keyboardImage {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    </style>
 </head>
 
 <body>
@@ -33,28 +24,28 @@
         </section>
 
         <h3>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" style="width: 81%;" onclick="showKeyboard('keyboardImage')"><br>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" style="width: 81%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" style="width: 81%;" onclick="showKeyboard('keyboardImage')"><br>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" style="width: 81%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
 
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" style="width: 84%;" onclick="showKeyboard('keyboardImage')"><br>
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" style="width: 84%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
 
-            <label for="weight">Weight:</label>
-            <input type="number" id="weight" name="weight" style="width: 78.7%;" onclick="showKeyboard('keyboardImage')"><br>
+          <label for="weight">Weight:</label>
+          <input type="number" id="weight" name="weight" style="width: 78.7%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
 
-            <label for="goalWeight">Goal Weight:</label>
-            <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;" onclick="showKeyboard('keyboardImage')"><br>
+          <label for="goalWeight">Goal Weight:</label>
+          <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
 
-            <label for="goals">Goals:</label>
-            <input type="text" id="goals" name="goals" style="width: 81.3%;" onclick="showKeyboard('keyboardImage')"><br>
-        </h3>
+          <label for="goals">Goals:</label>
+          <input type="text" id="goals" name="goals" style="width: 81.3%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+      </h3>
 
-        <img id="keyboardImage" src="screenKeyboard.png" alt="keyboars">
+      <img id="keyboardImage" src="screenKeyboard.png" alt="keyboard">
 
-        <script src="scriptEditProfile.js"></script>
+      <script src="scriptEditProfile.js"></script>
     </main>
 </body>
 
