@@ -11,27 +11,36 @@
   </head>
   <body>
     <main>
-        <div class="header">
-            <h1>User Profile</h1>
-            <button class="edit-button" onclick="window.location.href='editProfile.html'">Edit</button>
+        <h1 style="text-align:center">User Profile</h1>
+  
+        <div class="header1">
+          <button class="edit-button" onclick="window.location.href='editProfile.html'">Edit</button>
         </div>
-        
+  
       <section>
         <img class="circle" id="profilePic" src="1.2/penguinProfile.png" alt="Penguin Profile">
         <p style="font-size: 23px;"><b>username_here</b></p>
       </section>
-
       <h3>
-        <p> Name: Evan Golub</p>
-        <p> Email: evan.golub@umd.edu</p>
-        <p> Age: 50</p>
-        <p> Weight: 100</p>
-        <p> Goal Weight: 150</p>
-        <p> Goals: Gain Weight</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maintain a Healthy Lifestyle</p> <!-- hella hardcoded, fix later -->
-
+        <p> Name: <span id="savedName"></span></p>
+        <p> Email: <span id="savedEmail"></span></p>
+        <p> Age: <span id="savedAge"></span></p>
+        <p> Weight: <span id="savedWeight"></span></p>
+        <p> Goal Weight: <span id="savedGoalWeight"></span></p>
+        <p> Goals: <span id="savedGoals"></span></p>
       </h3>
 
+
+      <script>
+        // Retrieve data from localStorage and display it on the page
+        document.getElementById('savedName').innerText = localStorage.getItem('name');
+        document.getElementById('savedEmail').innerText = localStorage.getItem('email');
+        document.getElementById('savedAge').innerText = localStorage.getItem('age');
+        document.getElementById('savedWeight').innerText = localStorage.getItem('weight');
+        document.getElementById('savedGoalWeight').innerText = localStorage.getItem('goalWeight');
+        document.getElementById('savedGoals').innerText = localStorage.getItem('goals');
+      </script>
+        
     </main>
 
     <nav>
