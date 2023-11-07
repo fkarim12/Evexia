@@ -8,6 +8,15 @@
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
     <link rel="stylesheet" href="stylesUserProfile.css" />
+    <style>
+        #keyboardImage {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
 <body>
@@ -25,46 +34,27 @@
 
         <h3>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" style="width: 81%;"><br>
+            <input type="text" id="name" name="name" style="width: 81%;" onclick="showKeyboard('keyboardImage')"><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" style="width: 81%;"><br>
+            <input type="email" id="email" name="email" style="width: 81%;" onclick="showKeyboard('keyboardImage')"><br>
 
             <label for="age">Age:</label>
-            <input type="number" id="age" name="age" style="width: 84%;"><br>
+            <input type="number" id="age" name="age" style="width: 84%;" onclick="showKeyboard('keyboardImage')"><br>
 
             <label for="weight">Weight:</label>
-            <input type="number" id="weight" name="weight" style="width: 78.7%;"><br>
+            <input type="number" id="weight" name="weight" style="width: 78.7%;" onclick="showKeyboard('keyboardImage')"><br>
 
             <label for="goalWeight">Goal Weight:</label>
-            <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;"><br>
+            <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;" onclick="showKeyboard('keyboardImage')"><br>
 
             <label for="goals">Goals:</label>
-            <input type="text" id="goals" name="goals" style="width: 81.3%;"><br>
+            <input type="text" id="goals" name="goals" style="width: 81.3%;" onclick="showKeyboard('keyboardImage')"><br>
         </h3>
 
-        <script>
-            function saveProfile() {
-                var name = document.getElementById('name').value;
-                var email = document.getElementById('email').value;
-                var age = document.getElementById('age').value;
-                var weight = document.getElementById('weight').value;
-                var goalWeight = document.getElementById('goalWeight').value;
-                var goals = document.getElementById('goals').value;
+        <img id="keyboardImage" src="screenKeyboard.png" alt="keyboars">
 
-                // Store the data in localStorage
-                localStorage.setItem('name', name);
-                localStorage.setItem('email', email);
-                localStorage.setItem('age', age);
-                localStorage.setItem('weight', weight);
-                localStorage.setItem('goalWeight', goalWeight);
-                localStorage.setItem('goals', goals);
-
-                // Redirect to the user profile page
-                window.location.href = 'userProfile.html';
-            }
-        </script>
-
+        <script src="scriptEditProfile.js"></script>
     </main>
 </body>
 
