@@ -1,29 +1,26 @@
-const greenPercentageInput = document.getElementById('greenPercentage');
-const yellowPercentageInput = document.getElementById('yellowPercentage');
-const redPercentageInput = document.getElementById('redPercentage');
+const greenPercentage = parseInt(localStorage.getItem('greenPercentage')) || 33;
+const yellowPercentage = parseInt(localStorage.getItem('yellowPercentage')) || 33;
+const redPercentage = parseInt(localStorage.getItem('redPercentage')) || 33;
+
 const pieChart = document.getElementById('pieChart');
 const percentageDisplay = document.getElementById('percentageDisplay');
 
 function updatePieChart() {
-    const totalPercentage = parseFloat(greenPercentageInput.value) + parseFloat(yellowPercentageInput.value) + parseFloat(redPercentageInput.value);
-    const greenPercentage = (parseFloat(greenPercentageInput.value) / totalPercentage) * 100;
-    const yellowPercentage = (parseFloat(yellowPercentageInput.value) / totalPercentage) * 100;
-    const redPercentage = (parseFloat(redPercentageInput.value) / totalPercentage) * 100;
+    const totalPercentage = greenPercentage + yellowPercentage + redPercentage;
+    const greenPercentageValue = (greenPercentage / totalPercentage) * 100;
+    const yellowPercentageValue = (yellowPercentage / totalPercentage) * 100;
+    const redPercentageValue = (redPercentage / totalPercentage) * 100;
 
     pieChart.style.background = `conic-gradient(
       from 0deg,
-      palegreen ${greenPercentage}%,
-      lightgoldenrodyellow ${greenPercentage}% ${greenPercentage + yellowPercentage}%,
-      lightcoral ${greenPercentage + yellowPercentage}% ${greenPercentage + yellowPercentage + redPercentage}%
+      palegreen ${greenPercentageValue}%,
+      lightgoldenrodyellow ${greenPercentageValue}% ${greenPercentageValue + yellowPercentageValue}%,
+      lightcoral ${greenPercentageValue + yellowPercentageValue}% ${greenPercentageValue + yellowPercentageValue + redPercentageValue}%
     )`;
 
-    const selectedPercentage = greenPercentageInput.value;
+    const selectedPercentage = greenPercentage;
     percentageDisplay.textContent = `Selected Portion: ${selectedPercentage}%`;
 }
 
-greenPercentageInput.addEventListener('input', updatePieChart);
-yellowPercentageInput.addEventListener('input', updatePieChart);
-redPercentageInput.addEventListener('input', updatePieChart);
-
-// Initial update
+// Call updatePieChart() on page load
 updatePieChart();
