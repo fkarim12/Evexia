@@ -10,33 +10,37 @@
     margin: 4px 2px;
     cursor: pointer;
     border: 2px solid black;
-    margin-left: 100px;
+    
+    margin-bottom: 25px;
   }
 
+  #enter:hover {
+    background: linear-gradient(135deg, #0056b3, #1e4f79);
+}
+
 body {
-    text-align: center;
-    font-size: larger;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+label{
+  font-size: large;
 }
   
-input[type=text] {
-    padding: 3px 7px;
-    margin: 10px 0;
-    box-sizing: border-box;
-}
-
-#dayOfWeek{
-  font-size: 18px;
-  margin-bottom: 18px;
-}
-
-#dayLabel{
-  margin-left: 290px;
-  font-size: 20px;
-}
-
-#dateLabel{
-  font-size: 20px;
-  margin-bottom: 50px;
+select, input[type="date"], input[type="time"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 17px;
+  border: none;
+  font-style: italic;
+  background-color: rgba(154, 152, 152, 0.1);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  outline: none;
 }
 
 form {
@@ -53,12 +57,30 @@ form {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin-bottom: 50px;
+  margin-top: 70px;
   width: 80%;
   height: 400px;
 }
 
+#startSelect, #endSelect{
+  margin-left: 20px;
+}
 
 #endTime{
   margin-bottom: 50px;
+}
+
+@keyframes chartAnimation {
+  0% {
+      transform: scaleY(0);
+      opacity: 0;
+  }
+  100% {
+      transform: scaleY(1);
+      opacity: 1;
+  }
+}
+
+#sleepTrackerChart {
+  animation: chartAnimation 1s ease-out; /* Apply animation on chart load */
 }
