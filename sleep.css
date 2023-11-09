@@ -15,6 +15,7 @@
 
 body {
     text-align: center;
+    font-size: larger;
 }
   
 input[type=text] {
@@ -23,7 +24,28 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-.container {
+#dayOfWeek{
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+#dayLabel{
+  margin-left: 290px;
+  font-size: 20px;
+}
+
+#dateLabel{
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+form {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.chart-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -32,16 +54,11 @@ input[type=text] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin-bottom: 50px;
+  width: 80%;
+  height: 400px;
 }
 
-#startSelect, #endSelect{
-  margin-left: 20px;
-}
 
-#endSelect{
+#endTime{
   margin-bottom: 50px;
-}
-
-#dateLabel{
-  margin-left: 215px;
 }

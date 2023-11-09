@@ -1,56 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evexia</title>
-    <link rel="stylesheet" href="stylesAll.css" />
-    <link rel="stylesheet" href="sleep.css">
-  </head>
-  <body>
-    <main>
-      <div class="container">
-        <h1>Sleep Log This Week</h1>
-        <canvas id="sleepChart"></canvas>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="sleep.js"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Sleep Tracker Graph</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="sleep.css">
+<link rel="stylesheet" href="stylesAll.css" />
+</head>
+<body>
 
-      <label id = "dateLabel" for="date">Enter New Sleep Data: </label>
-      <button id = "enter" type="button">Enter</button>
-      <br>
-      <input type="text" size="" id="date">
-      <br>
-      <br>
-      <label for="start">Start:</label>
-      <br>
-      <br>
-      <input type="text" size="2" id="start" value="00"> : <input type="text" size="2" id="start" value="00">
-      <select name="startSelect" id="startSelect">
-          <option value="AM">AM</option>
-          <option value="PM">PM</option>
-      </select>
-      <br>
-      <br>
-      <label for="end">End:</label>
-      <br>
-      <br>
-      <input type="text" size="2" value="00" id="end"> : <input type="text" size="2" value="00" id="end">
-      <select name="endSelect" id="endSelect">
-          <option value="AM">AM</option>
-          <option value="PM">PM</option>
-      </select>
-    </main>
-    <nav>
-        <ul>
-          <a href="./index.html">Calorie Tracker</a>
-          <a href="./intakeBreakdown.html">Breakdown</a>
-          <a href="./visualizations.html">Visualize</a>
-          <a href="./sleepTracker.html" class="active">Sleep</a>
-          <a href="./userProfile.html">Profile</a>
-        </ul>
-      </nav>
-      
-  </body>
+<main>
+
+<div class="chart-container">
+    <canvas id="sleepTrackerChart"></canvas>
+</div>
+
+<form id="sleepDataForm">
+  <label  id ="dayLabel" for="dayOfWeek">Day of Week:</label>
+  <button id = "enter"type="submit">Add Sleep Data</button>
+
+  <br>
+  <select id="dayOfWeek" name="dayOfWeek" required>
+    <option value="0">Sunday</option>
+    <option value="1">Monday</option>
+    <option value="2">Tuesday</option>
+    <option value="3">Wednesday</option>
+    <option value="4">Thursday</option>
+    <option value="5">Friday</option>
+    <option value="6">Saturday</option>
+  </select>
+
+
+  <br>
+
+  <label id= "dateLabel" for="date">Date:</label>
+  <br>
+  <input type="date" id="date" name="date" required>
+  
+
+  <br>
+
+  <label for="startTime">Start Time:</label>
+  <br>
+  <input type="time" id="startTime" name="startTime" required>
+
+  <br>
+
+  <label for="endTime">End Time:</label>
+  <br>
+  <input type="time" id="endTime" name="endTime" required>
+
+</form>
+
+<script>
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  const sleepData = {
+  // Initialize labels with days of the week and empty dates
+  labels: daysOfWeek.map(day => day + ' ()'), 
+  datasets: [{
+    label: 'Hours of Sleep',
+    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+    borderColor: 'rgba(0, 123, 255, 1)',
+    data: [0, 0, 0, 0, 0, 0, 0], // Initialize with 0 for each day of the week
+  }]
+};
+
+  const config = {
+    type: 'bar',
+    data: sleepData,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          suggestedMax: 12
+        }
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Weekly Sleep Tracker Graph'
+        }
+      }
+    },
+  };
+
+  const sleepTrackerChart = new Chart(
+    document.getElementById('sleepTrackerChart'),
+    config
+  );
+
+  document.getElementById('sleepDataForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const dayOfWeekSelect = document.getElementById('dayOfWeek');
+    const dayIndex = parseInt(dayOfWeekSelect.value);
+    const dateInput = document.getElementById('date').value;
+    const selectedDate = new Date(dateInput);
+    const actualDayIndex = selectedDate.getDay(); // gets the day of the week (0-6)
+
+
+      // Check if the selected day of the week matches the date
+    if (dayIndex !== actualDayIndex+1) {
+      if(dayIndex === 0 && actualDayIndex === 6){
+        console.log(dayIndex + " _ " + actualDayIndex)
+      } else{
+      alert("The selected day does not match the date. Please correct it.");
+      console.log(dayIndex + " _ " + actualDayIndex+1 + "!!!")
+      dayOfWeekSelect.focus(); // Optional: focus the day of the week dropdown
+      return; // Stop the form submission
+      }
+    }
+    
+  const startTime = document.getElementById('startTime').value;
+  const endTime = document.getElementById('endTime').value;
+
+  let startDateTime = new Date(`${dateInput}T${startTime}`);
+  let endDateTime = new Date(`${dateInput}T${endTime}`);
+  
+  if (endDateTime <= startDateTime) {
+    endDateTime.setDate(endDateTime.getDate() + 1);
+  }
+
+  let hoursSlept = (endDateTime - startDateTime) / 1000 / 60 / 60;
+
+  sleepData.datasets[0].data[dayIndex] = hoursSlept.toFixed(2);
+  sleepData.labels[dayIndex] = daysOfWeek[dayIndex] + ` (${dateInput})`;
+
+  sleepTrackerChart.update();
+});
+
+  
+
+  // Optional: Reset the form and chart for a new week
+  function resetForNewWeek() {
+    sleepData.datasets[0].data.fill(0); // Reset data
+    sleepTrackerChart.update();
+  }
+  // Call resetForNewWeek() to reset every new week
+</script>
+</main>
+
+<nav>
+  <ul>
+    <a href="./index.html"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
+    <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
+    <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
+    <a href="./sleepTracker.html" class="active"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
+    <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
+  </ul>
+</nav>
+
+</body>
 </html>
