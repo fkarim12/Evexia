@@ -25,6 +25,7 @@
         <p> Name: <span id="savedName"></span></p>
         <p> Email: <span id="savedEmail"></span></p>
         <p> Age: <span id="savedAge"></span></p>
+        <p> Height: <span id="savedHeight"></span></p>
         <p> Weight: <span id="savedWeight"></span></p>
         <p> Goal Weight: <span id="savedGoalWeight"></span></p>
         <p> Goals: <span id="savedGoals"></span></p>
@@ -36,22 +37,21 @@
         document.getElementById('savedName').innerText = localStorage.getItem('name');
         document.getElementById('savedEmail').innerText = localStorage.getItem('email');
         document.getElementById('savedAge').innerText = localStorage.getItem('age');
+        document.getElementById('savedHeight').innerText = localStorage.getItem('height');
         document.getElementById('savedWeight').innerText = localStorage.getItem('weight');
         document.getElementById('savedGoalWeight').innerText = localStorage.getItem('goalWeight');
         document.getElementById('savedGoals').innerText = localStorage.getItem('goals');
       </script>
         
     </main>
-
     <nav>
-        <ul>
-          <a href="./index.html">Calorie Tracker</a>
-          <a href="./intakeBreakdown.html">Breakdown</a>
-          <a href="./visualizations.html">Visualize</a>
-          <a href="./sleepTracker.html">Sleep</a>
-          <a href="./userProfile.html" class="active">Profile</a>
-        </ul>
-      </nav>
-      
+      <ul>
+        <a href="./index.html"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
+        <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
+        <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
+        <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
+        <a href="./userProfile.html" class="active"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
+      </ul>
+    </nav>
   </body>
 </html>

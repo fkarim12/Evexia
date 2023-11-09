@@ -3,6 +3,7 @@ window.onload = function () {
     document.getElementById('name').value = localStorage.getItem('name') || '';
     document.getElementById('email').value = localStorage.getItem('email') || '';
     document.getElementById('age').value = localStorage.getItem('age') || '';
+    document.getElementById('height').value = localStorage.getItem('height') || '';
     document.getElementById('weight').value = localStorage.getItem('weight') || '';
     document.getElementById('goalWeight').value = localStorage.getItem('goalWeight') || '';
     document.getElementById('goals').value = localStorage.getItem('goals') || '';
@@ -12,6 +13,7 @@ function saveProfile() {
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var age = document.getElementById('age').value;
+    var height = document.getElementById('height').value;
     var weight = document.getElementById('weight').value;
     var goalWeight = document.getElementById('goalWeight').value;
     var goals = document.getElementById('goals').value;
@@ -20,6 +22,7 @@ function saveProfile() {
     localStorage.setItem('name', name);
     localStorage.setItem('email', email);
     localStorage.setItem('age', age);
+    localStorage.setItem('height', height);
     localStorage.setItem('weight', weight);
     localStorage.setItem('goalWeight', goalWeight);
     localStorage.setItem('goals', goals);

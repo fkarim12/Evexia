@@ -2,68 +2,84 @@ const calorieData = {
     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     datasets: [
       {
-        label: 'Calorie Intake of the Last 9 Days',
+        label: 'Calories',
         data: [2000, 1800, 1700, 1900, 2100, 2000, 1800],
-        borderColor: 'rgba(75, 192, 192, 1)',
         fill: false,
+        lineTension: 0,
+        borderColor: 'rgba(128,0,128,1)',
+        backgroundColor: 'rgba(128,0,128,0.3)',
+        options: {
+          plugins: {
+            legend: {
+              color: 'rgba(0,0,0,1)'
+            }
+          }
+        }
       },
     ],
   };
   
-  const weightData = {
-    labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
-    datasets: [
-      {
-        label: 'Weight Progress in the Last Year',
-        data: [185, 180, 190, 185, 180, 175, 195, 185, 165, 160, 180, 175],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        fill: false,
-      },
-    ],
-  };
+const calorieCtx = document.getElementById('calorie-chart').getContext('2d');
+new Chart(calorieCtx, {
+  type: 'line',
+  data: calorieData,
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    lineTension: 0,
+  },
+});
 
-  const sleepData = {
-    labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
-    datasets: [
-      {
-        label: 'Average Sleep in the Last Year(in hours)',
-        data: [8, 6, 7, 7, 8, 6, 5, 5, 7, 8, 6, 7],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        fill: false,
-      },
-    ],
-  };
-  
-  const calorieCtx = document.getElementById('calorie-chart').getContext('2d');
-  new Chart(calorieCtx, {
+document.addEventListener("DOMContentLoaded", function () {
+
+  var weightChart;
+
+  new Chart( 
+    document.getElementById('weightChart').getContext('2d'), 
+    {
     type: 'line',
-    data: calorieData,
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      lineTension: 0,
+      plugins: {
+        legend: {
+          color: 'rgba(204,85,0,1)'
+        }
+      }
     },
-  });
-  
-  const weightCtx = document.getElementById('weight-chart').getContext('2d');
-  new Chart(weightCtx, {
-    type: 'line',
-    data: weightData,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      lineTension: 0,
-    },
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: 'Weight in lbs',
+          data: [],
+          fill: false,
+          lineTension: 0,
+          borderColor: 'rgba(204,85,0,1)',
+          backgroundColor: 'rgba(204,85,0,0.3)'
+        },
+      ],
+    }
   });
 
-  const sleepCtx = document.getElementById('sleep-chart').getContext('2d');
-  new Chart(sleepCtx, {
-    type: 'line',
-    data: sleepData,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      lineTension: 0,
-    },
-  });
-  
+  function updateChart() {
+    var month = document.getElementById("monthSelect").value;
+    var weight = parseFloat(document.getElementById("weightInput").value);
+
+    if (isNaN(weight)) {
+      alert("Please enter a valid weight.");
+      return;
+    }
+
+    weightChart.data.labels.push(month);
+    weightChart.data.datasets[0].data.push(weight);
+    weightChart.update();
+
+    // Clear input fields
+    document.getElementById("monthSelect").value = "";
+    document.getElementById("weightInput").value = "";
+    }
+
+  document.getElementById("enter").addEventListener("click", updateChart);
+
+});

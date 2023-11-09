@@ -11,27 +11,49 @@
   </head>
   <body>
     <main>
-      <h1>Visualizations</h1>
-      <div class="graph-container">
+      <h1>Caloric Intake Over the Last Week</h1>
+      <div class="graph-container1">
         <canvas id="calorie-chart"></canvas>
-        <canvas id="weight-chart"></canvas>
       </div>
-      <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-    </main>
+      <h1>Weight Over the Past Year</h1>
+      <div class="graph-container2">
+        <canvas id="weightChart"></canvas>
+      </div>    
     <script 
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
     <script src="visualizations.js"></script>
 
+    <label id = "weightLabel" for="weight">Enter New Weight: </label>
+    <br>
+    <input type="text" size="" id="weightInput">
+    <br>
+    <br>
+    <label for="start">Month: </label>
+    <select name="monthSelect" id="monthSelect">
+        <option value="Jan">Jan</option>
+        <option value="Feb">Feb</option>
+        <option value="Mar">Mar</option>
+        <option value="Apr">Apr</option>
+        <option value="May">May</option>
+        <option value="Jun">Jun</option>
+        <option value="Jul">Jul</option>
+        <option value="Aug">Aug</option>
+        <option value="Sep">Sep</option>
+        <option value="Oct">Oct</option>
+        <option value="Nov">Nov</option>
+        <option value="Dec">Dec</option>
+    </select>
+    <button id = "enter" type="button">Enter</button>
+  </main>
     <nav>
-        <ul>
-          <a href="./index.html">Calorie Tracker</a>
-          <a href="./intakeBreakdown.html">Breakdown</a>
-          <a href="./visualizations.html" class="active">Visualize</a>
-          <a href="./sleepTracker.html">Sleep</a>
-          <a href="./userProfile.html">Profile</a>
-        </ul>
-      </nav>
-      
+      <ul>
+        <a href="./index.html"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
+        <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
+        <a href="./visualizations.html" class="active"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
+        <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
+        <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
+      </ul>
+    </nav>
   </body>
 </html>
