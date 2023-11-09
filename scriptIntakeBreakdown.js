@@ -23,9 +23,9 @@ function updatePieChart() {
       tomato ${greenAngle + yellowAngle}deg ${greenAngle + yellowAngle + redAngle}deg
     )`;
 
-    greenPercentageDisplay.textContent = `Green: ${greenPercentage}%`;
-    yellowPercentageDisplay.textContent = `Yellow: ${yellowPercentage}%`;
-    redPercentageDisplay.textContent = `Red: ${redPercentage}%`;
+    greenPercentageDisplay.textContent = `Carbohydrates: ${greenPercentage}%`;
+    yellowPercentageDisplay.textContent = `Protein: ${yellowPercentage}%`;
+    redPercentageDisplay.textContent = `Fat: ${redPercentage}%`;
 }
 
 // Call updatePieChart() on page load
