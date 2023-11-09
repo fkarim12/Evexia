@@ -4,7 +4,6 @@ body {
     flex-direction: column;
     min-height: 93vh;
     height: 960px;
-
 }
   
 main {
@@ -72,6 +71,6 @@ th, td {
 }
 
 .nav-icon {
-  width: 50px; /* Adjust the width as needed */
+  width: 60px; /* Adjust the width as needed */
   height: auto; /* Automatically calculate height based on the aspect ratio */
 }
