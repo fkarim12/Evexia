@@ -4,6 +4,13 @@
     align-items: center;
     padding: 10px 20px; 
   }
+
+.header1 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px; 
+}
   
   .edit-button {
     padding: 10px 20px;
@@ -12,7 +19,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+    margin-left: auto; 
+}
+
 
   .save-button {
     padding: 10px 20px;
@@ -42,8 +51,8 @@ section {
 }
 
 img {
-    width: 200px; 
-    height: 200px; 
+    width: 640px; 
+    height: 300px; 
 }
 
 .circle {       /*container for circle image*/
@@ -82,3 +91,19 @@ input[type="number"] {
     margin-bottom: 10px; /* Add vertical margin between input elements */
 }
 
+#keyboardImage {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body {
+  overflow-y: auto;
+}
+
+.scrollable-h3 {
+  max-height: 190px;
+  overflow-y: auto;
+}

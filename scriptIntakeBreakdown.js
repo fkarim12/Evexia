@@ -1,14 +1,16 @@
-// script.js
+const greenPercentage = parseInt(localStorage.getItem('greenPercentage')) || 33;
+const yellowPercentage = parseInt(localStorage.getItem('yellowPercentage')) || 33;
+const redPercentage = parseInt(localStorage.getItem('redPercentage')) || 33;
 
-const pieChart = document.getElementById('pieChart');
-const percentageDisplay = document.getElementById('percentageDisplay');
+const greenPercentageDisplay = document.getElementById('greenPercentageDisplay');
+const yellowPercentageDisplay = document.getElementById('yellowPercentageDisplay');
+const redPercentageDisplay = document.getElementById('redPercentageDisplay');
 
-pieChart.addEventListener('click', function (event) {
-  const rect = pieChart.getBoundingClientRect();
-  const angle = Math.atan2(event.clientY - rect.top - pieChart.clientHeight / 2, event.clientX - rect.left - pieChart.clientWidth / 2);
-  let percentage = ((angle + Math.PI) / (2 * Math.PI) * 100).toFixed(2);
-  if (percentage < 0) {
-    percentage = 100 + parseFloat(percentage);
-  }
-  percentageDisplay.textContent = `Selected Portion: ${percentage}%`;
-});
+function updatePercentageDisplays() {
+    greenPercentageDisplay.textContent = `Green: ${greenPercentage}%`;
+    yellowPercentageDisplay.textContent = `Yellow: ${yellowPercentage}%`;
+    redPercentageDisplay.textContent = `Red: ${redPercentage}%`;
+}
+
+// Call updatePercentageDisplays() on page load
+updatePercentageDisplays();

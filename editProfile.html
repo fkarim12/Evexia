@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
     <link rel="stylesheet" href="stylesUserProfile.css" />
+</head>
 
-  </head>
-  <body>
+<body>
     <main>
-      <div class="header">
-        <h1>Edit User Profile</h1>
-    </div>
+        <h1 style="text-align:center">Edit User Profile</h1>
 
-      <div class="header">
-        <button class="cancel-button" onclick="window.location.href='userProfile.html'">Cancel</button>
-        <button class="save-button" onclick="window.location.href='userProfile.html'">Save</button>
-      </div>
-      <section>
-        <img class="circle" id="profilePic" src="1.2/penguinProfile.png" alt="Penguin Profile">
-        <p style="font-size: 23px;"><b>username_here</b></p>
-      </section>
+        <div class="header">
+            <button class="cancel-button" onclick="window.location.href='userProfile.html'">Cancel</button>
+            <button class="save-button" onclick="saveProfile()">Save</button>
+        </div>
+        <section>
+            <img class="circle" id="profilePic" src="1.2/penguinProfile.png" alt="Penguin Profile">
+            <p style="font-size: 18px;"><b>username_here</b></p>
+        </section>
 
-      <h3>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" style="width: 81%;"><br>
-      
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" style="width: 81%;"><br>
-      
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" style="width: 84%;"><br>
-      
-        <label for="weight">Weight:</label>
-        <input type="number" id="weight" name="weight" style="width: 78.7%;"><br>
-      
-        <label for="goalWeight">Goal Weight:</label>
-        <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;"><br>
-      
-        <label for="goals">Goals:</label>
-        <input type="text" id="goals" name="goals" style="width: 81.3%;"><br>
+        <h3 id="h3Element"> 
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" style="width: 81%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" style="width: 81%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" style="width: 84%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+
+          <label for="height">Height:</label>
+          <input type="text" id="height" name="height" style="width: 79%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+
+          <label for="weight">Weight:</label>
+          <input type="number" id="weight" name="weight" style="width: 78.7%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+
+          <label for="goalWeight">Goal Weight:</label>
+          <input type="number" id="goalWeight" name="goalWeight" style="width: 69.5%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
+
+          <label for="goals">Goals:</label>
+          <input type="text" id="goals" name="goals" style="width: 81.3%;" onclick="showKeyboard(event, 'keyboardImage')"><br>
       </h3>
+
+      <img id="keyboardImage" src="screenKeyboard.png" alt="keyboard">
+
+      <script src="scriptEditProfile.js"></script>
       
-  </body>
+    </main>
+</body>
+
 </html>
