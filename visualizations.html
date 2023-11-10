@@ -26,7 +26,7 @@
     <form id = "weightForm">
       <h3 text-align = "left">Add New Weight Entry</h3> 
         <label id = "monthLabel" for="monthSelect">Month:</label><br>
-        <select name="monthSelect" id="monthSelect" required>
+        <select name="monthSelect" id="monthSelect" required style="width:455px;">
           <option value="0">Jan</option>
           <option value="1">Feb</option>
           <option value="2">Mar</option>
@@ -43,13 +43,15 @@
 
       <label id= "dateLabel" for="date">Date:</label>
       <br>
-      <input type="date" id="date" name="date" required><br> 
+      <input type="date" id="date" name="date" required style="width:455px;"><br> 
 
       <label for="weight">Enter Weight:</label><br>
-      <input type="number" id="weight" name="weight" required><br>
+      <input type="number" id="weight" name="weight" required style="width:455px;" onclick="showKeyboard(event, 'keyboardImage')"><br>
 
       <button id = "enter" type="submit">Add Weight Data</button>
     </form>
+    <img id="keyboardImage" src="screenKeyboard.png" alt="keyboard">
+
     
     <script>
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
