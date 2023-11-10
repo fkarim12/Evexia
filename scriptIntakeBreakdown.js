@@ -21,11 +21,11 @@ colorblindToggle.addEventListener("click", function () {
 
 function updateColors() {
   const steelblueColor = notcolorblindMode ? "lightblue" : "steelblue";
-  const siennaColor = notcolorblindMode ? "palegoldenrod" : "sienna";
+  const rosybrownColor = notcolorblindMode ? "palegoldenrod" : "rosybrown";
   const darkorangeColor = notcolorblindMode ? "lightsalmon" : "darkorange";
 
   sections[0].style.backgroundColor = steelblueColor;
-  sections[1].style.backgroundColor = siennaColor;
+  sections[1].style.backgroundColor = rosybrownColor;
   sections[2].style.backgroundColor = darkorangeColor;
 
   updatePieChart();
