@@ -85,12 +85,12 @@ h3 input {
 
 input[type="text"],
 input[type="email"],
-input[type="number"] {
+input[type="number"], select {
     width: 400px; /* Set the width of the input elements to 100% */
     padding: 10px; /* Add padding inside the text boxes */
     border: 1px solid #ccc; /* Add a border to the text boxes */
     border-radius: 10px; /* Add rounded edges */
-    margin-bottom: 10px; /* Add vertical margin between input elements */
+    margin-bottom: 0px; /* Add vertical margin between input elements */
 }
 
 #keyboardImage {

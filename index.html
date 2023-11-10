@@ -18,9 +18,12 @@
       localStorage.setItem('bluePercentage', bluePercentage);
       localStorage.setItem('brownPercentage', brownPercentage);
       localStorage.setItem('redPercentage', redPercentage);
-    </script>
 
-    <script>
+      var calGoal = localStorage.getItem('calGoal');
+      if (!calGoal) { //if no default
+        calGoal = 2000;
+      }
+
       function addCaloriesToTracker(calories) {
         const caloriesCell = document.querySelector('.section.invisible-lines table tr:last-child td:first-child');
         const goalCell = document.querySelector('.section.invisible-lines table tr:last-child td:nth-child(2)');

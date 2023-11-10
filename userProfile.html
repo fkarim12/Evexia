@@ -19,7 +19,7 @@
   
       <section>
         <img class="circle" id="profilePic" src="1.2/penguinProfile.png" alt="Penguin Profile">
-        <p style="font-size: 23px;"><b>username_here</b></p>
+        <p style="font-size: 23px;"><b>user_beta</b></p>
       </section>
       <h3>
         <p> Name: <span id="savedName"></span></p>
@@ -40,6 +40,29 @@
         document.getElementById('savedWeight').innerText = localStorage.getItem('weight');
         document.getElementById('savedGoalWeight').innerText = localStorage.getItem('goalWeight');
         document.getElementById('savedGoals').innerText = localStorage.getItem('goals');
+
+        function updateCalGoal() {
+          var goalsDropdown = document.getElementById("goals");
+          var selectedOption = goalsDropdown.options[goalsDropdown.selectedIndex].value;
+
+          switch (selectedOption) {
+              case "Gain Weight":
+                  calGoal = 2400;
+                  break;
+              case "Maintain Weight or Live a Healthy Lifestyle":
+                  calGoal = 2000;
+                  break;
+              case "Lose Weight":
+                  calGoal = 1600;
+                  break;
+              default:
+                  calGoal = 0;
+                  break;
+          }
+
+          localStorage.setItem('calGoal', calGoal);
+        }
+
       </script>
         
     </main>
