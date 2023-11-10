@@ -4,14 +4,8 @@ h1 {
   }
 
 body {
-  display: block;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 20px;
 }
 
 label{
@@ -110,6 +104,9 @@ select, input[type="date"], input[type="number"] {
       transform: scaleY(1);
       opacity: 1;
   }
+}
+#calorie-chart{
+  animation: chartAnimation 1s ease-out;
 }
 
 #weightChart {
