@@ -7,6 +7,7 @@
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
     <link rel="stylesheet" href="styleAddFood.css" />
+
   </head>
 
   <body>
@@ -15,12 +16,13 @@
         <h1>Add Food</h1>
        
         <div id="container">
-            <form>
+            <form id="foodForm">
                 <label for="meal">Meal</label>
                 <select id="meal" name="meal">
                     <option value="breakfast">Breakfast</option>
                     <option value="lunch">Lunch</option>
                     <option value="dinner">Dinner</option>
+                    <option value="snacks">Snacks</option>
                 </select>
 
                 <br>
@@ -50,7 +52,9 @@
                 
                 <br><br>
 
-                <input type="submit" value="Add Food Entry">
+                <div class="header1">
+                  <button id="addEntryButton" class="edit-button" onclick="window.location.href='index.html'">Add Food Entry</button>
+                </div>
             </form>
         </div>
       </div>
@@ -58,13 +62,35 @@
 
     <nav>
       <ul>
-        <a href="./index.html" class="active">Calorie Tracker</a>
-        <a href="./intakeBreakdown.html">Breakdown</a>
-        <a href="./visualizations.html">Visualize</a>
-        <a href="./sleepTracker.html">Sleep</a>
-        <a href="./userProfile.html">Profile</a>
+        <a href="./index.html" class="active"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
+        <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
+        <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
+        <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
+        <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
       </ul>
     </nav>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        function sendFoodDataToParent() {
+          const selectedMeal = document.getElementById('meal').value;
+          const foodName = document.getElementById('foodName').value;
+          const calories = document.getElementById('calories').value;
+
+          const data = {
+            meal: selectedMeal,
+            name: foodName,
+            calories: calories
+          };
+
+          window.opener.postMessage(data, '*');
+        }
+
+        document.getElementById('addEntryButton').addEventListener('click', function (event) {
+          event.preventDefault();
+          sendFoodDataToParent();
+        });
+      });
+    </script>
   </body>
 </html>
