@@ -98,3 +98,31 @@ td.right {
     padding: 10px; /* Adjust the padding for data cells */
     width: 33%; /* Equal distribution of columns */
 }
+
+
+.header1 {
+    overflow: hidden; /* Clear the float */
+  }
+  
+  .edit-button {
+    float: left;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: skyblue;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .cancel-button {
+    float: right;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: tomato;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+  }
+  

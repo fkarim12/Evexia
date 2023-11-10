@@ -15,59 +15,58 @@
         <h1>Add Food</h1>
        
         <div id="container">
-            <form id="foodForm">
-                <label for="meal">Meal</label>
-                <select id="meal" name="meal">
-                    <option value="breakfast">Breakfast</option>
-                    <option value="lunch">Lunch</option>
-                    <option value="dinner">Dinner</option>
-                    <option value="snacks">Snacks</option>
-                </select>
+          <form id="foodForm" onsubmit="return validateForm()">
+            <label for="meal">Meal</label>
+            <select id="meal" name="meal" required>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snacks">Snacks</option>
+            </select>
 
-                <br>
+            <label for="foodName">Food Name</label>
+            <input type="text" id="foodName" name="foodName" required>
+        
+            <br>
+        
+            <label for="calories">Calories</label>
+            <input type="number" id="calories" name="calories" required pattern="[0-9]+">
+        
+            <br>
+        
+            <label for="carbs">Carbohydrates (g)</label>
+            <input type="number" id="carbs" name="carbs" required pattern="[0-9]+">
+        
+            <br>
 
-                <label for="foodName">Food Name</label>
-                <input type="text" id="foodName" name="foodName" required>
+            <label for="proteins">Proteins (g)</label>
+            <input type="number" id="proteins" name="proteins" required pattern="[0-9]+">
+            
+            <br>
+            
+            <label for="fats">Fats (g)</label>
+            <input type="number" id="fats" name="fats" required pattern="[0-9]+">
 
-                <br>
-
-                <label for="calories">Calories</label>
-                <input type="number" id="calories" name="calories" required>
-
-                <br>
-
-                <label for="carbs">Carbohydrates (g)</label>
-                <input type="number" id="carbs" name="carbs" required>
-                
-                <br>
-
-                <label for="proteins">Proteins (g)</label>
-                <input type="number" id="proteins" name="proteins" required>
-    
-                <br>
-
-                <label for="fats">Fats (g)</label>
-                <input type="number" id="fats" name="fats" required>
-                
-                <br><br>
-
-                <div class="header1">
-                  <button id="addEntryButton" class="edit-button" onclick="window.location.href='index.html'">Add Food Entry</button>
-                  <button class="edit-button" onclick="window.location.href='index.html'">Close Food Entry</button>
-                </div>
-            </form>
+            <br><br>
+        
+            <div class="header1">
+                <button id="addEntryButton" class="edit-button" onclick="addFoodEntry()">Add Food Entry</button>
+                <button class="cancel-button" onclick="window.location.href='index.html'">Return</button>
+            </div>
+        </form>
+        
         </div>
       </div>
     </main>
 
     <nav>
-      <ul>
-        <a href="./index.html" class="active"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
-        <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
-        <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
-        <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
-        <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
-      </ul>
+        <ul>
+            <a href="./index.html" class="active"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
+            <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
+            <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
+            <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
+            <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
+        </ul>
     </nav> 
     
     <script>
@@ -80,6 +79,25 @@
         const carbs = document.getElementById('carbs').value;
         const proteins = document.getElementById('proteins').value;
         const fats = document.getElementById('fats').value;
+
+        // Check if all fields are filled out
+        if (!meal || !foodName || !calories || !carbs || !proteins || !fats) {
+          // Display a pop-out with an error message
+          const popOutContainer = document.getElementById('popOutContainer');
+          const popOutMessage = document.getElementById('popOutMessage');
+          const closeButton = document.getElementById('closeButton');
+
+          popOutMessage.innerText = 'Please fill out all fields before adding a food entry';
+
+          popOutContainer.style.display = 'block';
+
+          closeButton.addEventListener('click', function () {
+            // When the close button is clicked
+            popOutContainer.style.display = 'none';
+          });
+
+          return false; // Stop the form submission
+        }
 
         // Get existing food entries from localStorage or initialize an empty array
         let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
@@ -100,10 +118,7 @@
         // Redirect back to index.html
         window.location.href = 'index.html';
       }
-
-      // Event listener for the "Add Food Entry" button
-      document.getElementById('addEntryButton').addEventListener('click', addFoodEntry);
-
     </script>
-  </body>
+
+      </body>
 </html>

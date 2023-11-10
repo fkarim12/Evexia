@@ -21,7 +21,7 @@ label {
 }
 
 input[type="text"], input[type="number"] {
-    width: 100%;
+    width: 96%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -49,14 +49,29 @@ select {
     font-size: 20px;
 }
 
-.edit-button {
+.header1 {
+    overflow: hidden; /* Clear the float */
+  }
+  
+  .edit-button {
+    float: left;
     padding: 10px 20px;
+    font-size: 18px;
     background-color: skyblue;
     color: black;
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    margin-left: auto; 
+  }
+  
+  .cancel-button {
+    float: right;
+    padding: 10px 20px;
     font-size: 18px;
-}
+    background-color: tomato;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+  }
+  
