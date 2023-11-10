@@ -6,6 +6,7 @@ body {
     height: 960px;
     margin: 0;
     overflow-y: scroll;
+    background-color: #efeded;
 }
   
 main {
