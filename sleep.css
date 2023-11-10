@@ -6,7 +6,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 25px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
@@ -28,10 +28,12 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  background-color: #cccaca;
+
 }
 
 label{
-  font-size: large;
+  font-size: 25px;
 }
   
 select, input[type="date"], input[type="time"] {
@@ -39,7 +41,7 @@ select, input[type="date"], input[type="time"] {
   padding: 12px;
   font-size: 17px;
   border: none;
-  background-color: rgba(154, 152, 152, 0.1);
+  background-color: white;
   border-radius: 4px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -53,16 +55,16 @@ form {
 }
 
 .chart-container {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
   border-radius: 8px;
+  background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   /* margin-top: 100px; */
   width: 80%;
-  height: 400px;
+  height: 600px;
 }
 
 #startSelect, #endSelect{

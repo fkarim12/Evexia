@@ -9,7 +9,7 @@
 </head>
 <body>
 <main>
-  
+
 <h1>Sleep Tracker</h1>
 
 <div class="chart-container">
@@ -49,12 +49,28 @@
   <br>
   <input type="time" id="endTime" name="endTime" required>
 
-  <button id = "enter"type="submit">Add Sleep Data</button>
+  <button id = "enter"type="submit">Enter New Sleep Data</button>
 
 
 </form>
 
 <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('max', today);
+
+  const storedData = localStorage.getItem('sleepData');
+  if (storedData) {
+    const parsedData = JSON.parse(storedData);
+    sleepData.labels = parsedData.labels;
+    sleepData.datasets[0].data = parsedData.datasets[0].data;
+    sleepTrackerChart.update();
+  }
+
+});
+  
+
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   const sleepData = {
@@ -75,14 +91,26 @@
       scales: {
         y: {
           beginAtZero: true,
-          suggestedMax: 12
-        }
+          suggestedMax: 12,
+          ticks: {
+          font: {
+            size: 20, // Set the Y-axis label font size
+          },
+        },
+        },
+        x: {
+        ticks: {
+          font: {
+            size: 20, // Set the X-axis label font size
+          },
+        },
+      },
       },
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
         title: {
-          display: true,
+          display: true,       
         }
       }
     },
@@ -137,6 +165,8 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
   sleepData.labels[dayIndex] = daysOfWeek[dayIndex] + ` (${dateInput})`;
 
   sleepTrackerChart.update();
+
+  localStorage.setItem('sleepData', JSON.stringify(sleepData));
 });
 
   
