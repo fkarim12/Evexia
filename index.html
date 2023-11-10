@@ -33,16 +33,16 @@
         <h1>Calorie Tracker</h1>
   
         <div class="section invisible-lines;" style="background-color: #dcd0ff;">
-            <table>
+            <table class="custom-table">
               <tr style="font-size: 22px;">
-                <th>Calories</th>
-                <th>Goal</th>
-                <th>Net</th>
+                <th class="table-header">Calories</th>
+                <th class="table-header">Goal</th>
+                <th class="table-header">Net</th>
               </tr>
-              <tr>
-              <td>1520</td>
-              <td>1800</td>
-              <td>-280</td>
+              <tr style="font-size: 20px;">
+              <td id="caloriesCell">0</td>
+              <td id="goalCell">2000</td>
+              <td id="netCell">0</td>
               </tr>
             </table>
         </div>
@@ -130,10 +130,13 @@
       // Function to clear tables and localStorage data
       function resetData() {
         // Clear the tables
-        document.getElementById('breakfastTable').innerHTML = '<tr><td></td><td></td></tr>';
-        document.getElementById('lunchTable').innerHTML = '<tr><td></td><td></td></tr>';
-        document.getElementById('dinnerTable').innerHTML = '<tr><td></td><td></td></tr>';
-        document.getElementById('snacksTable').innerHTML = '<tr><td></td><td></td></tr>';
+        document.getElementById('breakfastTable').innerHTML = '<tr><td></td></tr>';
+        document.getElementById('lunchTable').innerHTML = '<tr><td></td></tr>';
+        document.getElementById('dinnerTable').innerHTML = '<tr><td></td></tr>';
+        document.getElementById('snacksTable').innerHTML = '<tr><td></td></tr>';
+
+        document.getElementById('caloriesCell').textContent = '0';
+        document.getElementById('netCell').textContent = '-' + localStorage.goal;
 
         // Clear localStorage data
         localStorage.removeItem('breakfast');
@@ -144,6 +147,33 @@
 
       // Event listener for the "Reset" button
       document.getElementById('resetButton').addEventListener('click', resetData);
+
+      function updateTotalCalories() {
+        const breakfastEntries = JSON.parse(localStorage.getItem('breakfast')) || [];
+        let totalCalories = 0;
+
+        // Calculate total calories from breakfast entries
+        breakfastEntries.forEach((entry) => {
+          totalCalories += parseInt(entry.calories);
+        });
+
+        const goal = 2000; // Example daily goal, you can fetch this from localStorage
+        const netCalories = totalCalories - goal;
+        const netCell = document.getElementById('netCell');
+
+        // Update the total calories cell in the first table
+        document.getElementById('caloriesCell').textContent = totalCalories;
+
+        // Update the net calories cell with the appropriate sign
+        if (netCalories >= 0) {
+          netCell.textContent = '+' + netCalories;
+        } else {
+          netCell.textContent = netCalories;
+  }
+      }
+
+      // Call the function initially to set the initial total calories
+      updateTotalCalories();
 
     </script>
   </body>

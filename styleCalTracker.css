@@ -82,3 +82,19 @@ td.right {
     margin-left: auto; 
     font-size: 18px;
 }
+
+.custom-table {
+    width: 100%; /* Adjust the width as needed */
+    border-collapse: collapse;
+}
+  
+.table-header {
+    text-align: center;
+    padding: 10px; /* Adjust the padding for header cells */
+}
+  
+.custom-table td {
+    text-align: center;
+    padding: 10px; /* Adjust the padding for data cells */
+    width: 33%; /* Equal distribution of columns */
+}
