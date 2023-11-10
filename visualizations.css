@@ -23,7 +23,7 @@ form {
     margin: 0 auto;
     padding: 20px;
     background-size: cover;
-    background-color: #f5f5f5;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -35,7 +35,7 @@ form {
   margin: 0 auto;
   padding: 20px;
   background-size: cover;
-  background-color: #f5f5f5;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -130,5 +130,5 @@ img {
 #weightForm.scrollable {
   max-height: 190px;
   overflow-y: auto;
-  margin-bottom: 120px; 
+  margin-bottom: 200px; 
 }
