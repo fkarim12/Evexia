@@ -57,7 +57,6 @@ function updatePieChart() {
 
 updatePieChart();
 
-// Rest of your existing code...
 
 
 const learnMoreButton = document.getElementById("learnMoreButton");

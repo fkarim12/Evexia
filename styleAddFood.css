@@ -17,6 +17,7 @@ label {
     display: block;
     margin: 10px 0;
     font-weight: bold;
+    font-size: 22px;
 }
 
 input[type="text"], input[type="number"] {
@@ -24,6 +25,7 @@ input[type="text"], input[type="number"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    font-size: 20px;
 }
 
 input[type="submit"] {
@@ -44,6 +46,7 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    font-size: 20px;
 }
 
 .edit-button {
@@ -55,4 +58,5 @@ select {
     border-radius: 5px;
     cursor: pointer;
     margin-left: auto; 
+    font-size: 18px;
 }

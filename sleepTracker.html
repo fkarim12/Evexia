@@ -51,25 +51,49 @@
 
   <button id = "enter"type="submit">Enter New Sleep Data</button>
 
-
 </form>
 
+
+<div class="header1">
+  <button class="learn-button" id="learnMoreButton">Learn More</button>
+</div>
+
+<div class="pop-out-container" id="popOutContainer">
+  <span class="close-button" id="closeButton">&times;</span>
+  <div class="pop-out-content">
+    Good sleep improves your brain performance, mood, and health. 
+    Not getting enough quality sleep regularly can bring risks of many different diseases and/or disorders. <br><br>
+    Younger school-age children should get at least nine hours a night.<br><br>
+    Teenagers should get between eight and 10 hours of sleep a night. <br><br> 
+    Most adults need at least seven hours or more of sleep each night.  </div>
+</div>  
+<br>
+
 <script>
+  const learnMoreButton = document.getElementById("learnMoreButton");
+const popOutContainer = document.getElementById("popOutContainer");
+const closeButton = document.getElementById("closeButton");
 
-document.addEventListener("DOMContentLoaded", function() {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('date').setAttribute('max', today);
-
-  const storedData = localStorage.getItem('sleepData');
-  if (storedData) {
-    const parsedData = JSON.parse(storedData);
-    sleepData.labels = parsedData.labels;
-    sleepData.datasets[0].data = parsedData.datasets[0].data;
-    sleepTrackerChart.update();
-  }
-
+learnMoreButton.addEventListener("click", function () {
+  //when button is clicked
+  popOutContainer.style.display = "block";
 });
-  
+
+closeButton.addEventListener("click", function () {
+  //when the cross mark is clicked
+  popOutContainer.style.display = "none";
+});
+
+window.addEventListener("click", function (event) {
+  // Close window when clicking outside of it
+  if (
+    event.target !== closeButton &&
+    event.target !== learnMoreButton &&
+    !popOutContainer.contains(event.target)
+  ) {
+    popOutContainer.style.display = "none";
+  }
+});
 
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -138,16 +162,39 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
 
 
       // Check if the selected day of the week matches the date
-    if (dayIndex !== actualDayIndex+1) {
-      if(dayIndex === 0 && actualDayIndex === 6){
-        console.log(dayIndex + " _ " + actualDayIndex)
-      } else{
-      alert("The selected day does not match the date. Please correct it.");
-      console.log(dayIndex + " _ " + actualDayIndex+1 + "!!!")
-      dayOfWeekSelect.focus(); // Optional: focus the day of the week dropdown
-      return; // Stop the form submission
+      if (dayIndex !== actualDayIndex + 1) {
+  if (dayIndex === 0 && actualDayIndex === 6) {
+    console.log(dayIndex + " _ " + actualDayIndex);
+  } else {
+    const popOutContainer = document.getElementById("popOutContainer");
+    const popOutContent = document.querySelector(".pop-out-content");
+    const closeButton = document.getElementById("closeButton");
+    popOutContainer.style.backgroundColor = "tomato";
+
+
+    popOutContent.innerHTML = "The selected day does not match the date. Please correct it";
+
+    popOutContainer.style.display = "block";
+
+    closeButton.addEventListener("click", function () {
+      // When the close button is clicked
+      popOutContainer.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+      // Close window when clicking outside of it
+      if (
+        event.target !== closeButton &&
+        !popOutContainer.contains(event.target)
+      ) {
+        popOutContainer.style.display = "none";
       }
-    }
+    });
+
+    dayOfWeekSelect.focus(); // Optional: focus the day of the week dropdown
+    return; // Stop the form submission
+  }
+}
     
   const startTime = document.getElementById('startTime').value;
   const endTime = document.getElementById('endTime').value;

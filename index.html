@@ -23,36 +23,6 @@
       if (!calGoal) { //if no default
         calGoal = 2000;
       }
-
-      function addCaloriesToTracker(calories) {
-        const caloriesCell = document.querySelector('.section.invisible-lines table tr:last-child td:first-child');
-        const goalCell = document.querySelector('.section.invisible-lines table tr:last-child td:nth-child(2)');
-
-        const currentCalories = parseInt(caloriesCell.textContent);
-        const currentGoal = parseInt(goalCell.textContent);
-        const newCalories = currentCalories + calories;
-
-        caloriesCell.textContent = newCalories;
-        const net = currentGoal - newCalories;
-        document.querySelector('.section.invisible-lines table tr:last-child td:last-child').textContent = net;
-      }
-
-      window.addEventListener('message', function(event) {
-        const data = event.data;
-        if (data && data.meal && data.name && data.calories) {
-          const tableId = data.meal + 'Table';
-          const table = document.getElementById(tableId);
-
-          const newRow = table.insertRow(-1);
-          const cell1 = newRow.insertCell(0);
-          const cell2 = newRow.insertCell(1);
-
-          cell1.textContent = data.name;
-          cell2.textContent = data.calories + ' cals';
-
-          addCaloriesToTracker(parseInt(data.calories));
-        }
-      });
     </script>
 
   </head>
@@ -62,9 +32,9 @@
       <div class="container">
         <h1>Calorie Tracker</h1>
   
-        <div class="section invisible-lines" style="background-color: #dcd0ff;">
+        <div class="section invisible-lines;" style="background-color: #dcd0ff;">
             <table>
-              <tr font-size="20px">
+              <tr style="font-size: 22px;">
                 <th>Calories</th>
                 <th>Goal</th>
                 <th>Net</th>
@@ -80,38 +50,34 @@
         <div class="section" style="background-color: skyblue;">
           <div class="section-title">Breakfast</div>
           <br>
-          <table id="BreakfastTable" class="table invisible-lines" style="background-color: skyblue;">
-            <tr>
-              <td></td>
-              <td></td>
-            </tr>
+          <table id="breakfastTable" class="table invisible-lines" style="background-color: skyblue;">
           </table>
         </div>
 
         <div class="section" style="background-color: skyblue;">
           <div class="section-title">Lunch</div>
           <br>
-          <table id="LunchTable" class="table invisible-lines" style="background-color: skyblue;">
+          <table id="lunchTable" class="table invisible-lines" style="background-color: skyblue;">
           </table>
         </div>
 
         <div class="section" style="background-color: skyblue;">
           <div class="section-title">Dinner</div>
           <br>
-          <table id="DinnerTable" class="table invisible-lines" style="background-color: skyblue;">
-
+          <table id="dinnerTable" class="table invisible-lines" style="background-color: skyblue;">
           </table>
         </div>
 
         <div class="section" style="background-color: skyblue;">
           <div class="section-title">Snacks</div>
           <br>
-          <table id="SnacksTable" class="table invisible-lines" style="background-color: skyblue;">
+          <table id="snacksTable" class="table invisible-lines" style="background-color: skyblue;">
           </table>
         </div>
 
         <div class="header1">
           <button class="edit-button" onclick="window.location.href='addFood.html'">Add Food</button>
+          <button id="resetButton" class="edit-button" onclick="resetData()">Reset Data</button>
         </div>
         
       </div>
@@ -128,22 +94,57 @@
     </nav>
 
     <script>
-      function addFoodEntry(data) {
-        if (data && data.meal && data.name && data.calories) {
-          const tableId = data.meal + 'Table';
-          const table = document.getElementById(tableId);
+      // Function to populate the tables with food entries
+      function displayFoodEntries(meal, tableId) {
+        // Get the table element
+        const table = document.getElementById(tableId);
 
-          const newRow = table.insertRow(-1);
-          const cell1 = newRow.insertCell(0);
-          const cell2 = newRow.insertCell(1);
+        // Retrieve food entries for the specific meal from localStorage
+        let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
 
-          cell1.textContent = data.name;
-          cell2.textContent = data.calories + ' cals';
+        // Populate the table with the retrieved data
+        foodEntries.forEach((entry) => {
+          // Create a new row for each entry
+          const row = table.insertRow();
 
-          addCaloriesToTracker(parseInt(data.calories));
-        }
+          // Create cells for food name and calories (add other nutritional data as needed)
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+
+          // Assign values to the cells
+          cell1.textContent = entry.foodName;
+          cell1.style.textAlign = 'left';
+
+          cell2.textContent = entry.calories + ' cals';
+          cell2.style.textAlign = 'right';
+          // Assign other nutritional data to respective cells
+        });
       }
-    </script>
 
+      // Call the function for each meal table
+      displayFoodEntries('breakfast', 'breakfastTable');
+      displayFoodEntries('lunch', 'lunchTable');
+      displayFoodEntries('dinner', 'dinnerTable');
+      displayFoodEntries('snacks', 'snacksTable');
+
+      // Function to clear tables and localStorage data
+      function resetData() {
+        // Clear the tables
+        document.getElementById('breakfastTable').innerHTML = '<tr><td></td><td></td></tr>';
+        document.getElementById('lunchTable').innerHTML = '<tr><td></td><td></td></tr>';
+        document.getElementById('dinnerTable').innerHTML = '<tr><td></td><td></td></tr>';
+        document.getElementById('snacksTable').innerHTML = '<tr><td></td><td></td></tr>';
+
+        // Clear localStorage data
+        localStorage.removeItem('breakfast');
+        localStorage.removeItem('lunch');
+        localStorage.removeItem('dinner');
+        localStorage.removeItem('snacks');
+      }
+
+      // Event listener for the "Reset" button
+      document.getElementById('resetButton').addEventListener('click', resetData);
+
+    </script>
   </body>
 </html>
