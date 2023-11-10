@@ -51,6 +51,7 @@
 
 </form>
 
+
 <div class="header1">
   <button class="learn-button" id="learnMoreButton">Learn More</button>
 </div>
@@ -82,10 +83,10 @@ closeButton.addEventListener("click", function () {
 });
 
 window.addEventListener("click", function (event) {
-  //close window
+  // Close window when clicking outside of it
   if (
-    event.target !== learnMoreButton &&
     event.target !== closeButton &&
+    event.target !== learnMoreButton &&
     !popOutContainer.contains(event.target)
   ) {
     popOutContainer.style.display = "none";
@@ -147,16 +148,39 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
 
 
       // Check if the selected day of the week matches the date
-    if (dayIndex !== actualDayIndex+1) {
-      if(dayIndex === 0 && actualDayIndex === 6){
-        console.log(dayIndex + " _ " + actualDayIndex)
-      } else{
-      alert("The selected day does not match the date. Please correct it.");
-      console.log(dayIndex + " _ " + actualDayIndex+1 + "!!!")
-      dayOfWeekSelect.focus(); // Optional: focus the day of the week dropdown
-      return; // Stop the form submission
+      if (dayIndex !== actualDayIndex + 1) {
+  if (dayIndex === 0 && actualDayIndex === 6) {
+    console.log(dayIndex + " _ " + actualDayIndex);
+  } else {
+    const popOutContainer = document.getElementById("popOutContainer");
+    const popOutContent = document.querySelector(".pop-out-content");
+    const closeButton = document.getElementById("closeButton");
+    popOutContainer.style.backgroundColor = "tomato";
+
+
+    popOutContent.innerHTML = "The selected day does not match the date. Please correct it";
+
+    popOutContainer.style.display = "block";
+
+    closeButton.addEventListener("click", function () {
+      // When the close button is clicked
+      popOutContainer.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+      // Close window when clicking outside of it
+      if (
+        event.target !== closeButton &&
+        !popOutContainer.contains(event.target)
+      ) {
+        popOutContainer.style.display = "none";
       }
-    }
+    });
+
+    dayOfWeekSelect.focus(); // Optional: focus the day of the week dropdown
+    return; // Stop the form submission
+  }
+}
     
   const startTime = document.getElementById('startTime').value;
   const endTime = document.getElementById('endTime').value;
