@@ -9,6 +9,8 @@ body {
 main {
   flex: 1;
   padding: 10px;
+  max-height: calc(100vh - 82px); /* Adjusted to leave space for the nav bar */
+  overflow-y: auto;
 }
   
 /* space out tabs evenly across screen*/
@@ -17,6 +19,8 @@ nav ul {
     justify-content: space-evenly;
     list-style-type: none;
     padding: 0;
+    background-color: white; /* Set the background color of the entire nav to white */
+
   }
   
 /* containing the tabs */
