@@ -9,18 +9,20 @@ const bluePercentageDisplay = document.getElementById('bluePercentageDisplay');
 const brownPercentageDisplay = document.getElementById('brownPercentageDisplay');
 const redPercentageDisplay = document.getElementById('redPercentageDisplay');
 
-const colorblindButton = document.getElementById("colorblind");
-let colorblindMode = false;
+let notcolorblindMode = true; // Default mode is not colorblind
 
-colorblindButton.addEventListener("click", function () {
-  colorblindMode = !colorblindMode;
-  updateColors();
+const colorblindToggle = document.getElementById("colorblind");
+
+colorblindToggle.addEventListener("click", function () {
+  notcolorblindMode = !notcolorblindMode; // Toggle colorblind mode
+  updateColors(); // Update colors and pie chart
 });
 
+
 function updateColors() {
-  const steelblueColor = colorblindMode ? "lightblue" : "steelblue";
-  const siennaColor = colorblindMode ? "palegoldenrod" : "sienna";
-  const darkorangeColor = colorblindMode ? "lightsalmon" : "darkorange";
+  const steelblueColor = notcolorblindMode ? "lightblue" : "steelblue";
+  const siennaColor = notcolorblindMode ? "palegoldenrod" : "sienna";
+  const darkorangeColor = notcolorblindMode ? "lightsalmon" : "darkorange";
 
   sections[0].style.backgroundColor = steelblueColor;
   sections[1].style.backgroundColor = siennaColor;

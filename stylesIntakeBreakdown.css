@@ -87,3 +87,15 @@ main {
   width: 100%;
   height: 300px; /* Adjust the height as needed */
 }
+
+:root {
+  --color-blue: lightblue;
+  --color-brown: PaleGoldenRod;
+  --color-red: lightsalmon;
+}
+
+.colorblind-mode {
+  --color-blue: steelblue;
+  --color-brown: sienna;
+  --color-red: darkorange;
+}
