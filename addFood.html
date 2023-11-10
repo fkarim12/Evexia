@@ -7,7 +7,6 @@
     <title>Evexia</title>
     <link rel="stylesheet" href="stylesAll.css" />
     <link rel="stylesheet" href="styleAddFood.css" />
-
   </head>
 
   <body>
@@ -68,29 +67,42 @@
         <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
         <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
       </ul>
-    </nav>
-
+    </nav> 
+    
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        function sendFoodDataToParent() {
-          const selectedMeal = document.getElementById('meal').value;
-          const foodName = document.getElementById('foodName').value;
-          const calories = document.getElementById('calories').value;
+      // Function to handle addition of food entries
+      function addFoodEntry() {
+        // Retrieve form inputs
+        const meal = document.getElementById('meal').value;
+        const foodName = document.getElementById('foodName').value;
+        const calories = document.getElementById('calories').value;
+        const carbs = document.getElementById('carbs').value;
+        const proteins = document.getElementById('proteins').value;
+        const fats = document.getElementById('fats').value;
 
-          const data = {
-            meal: selectedMeal,
-            name: foodName,
-            calories: calories
-          };
+        // Get existing food entries from localStorage or initialize an empty array
+        let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
 
-          window.opener.postMessage(data, '*');
-        }
+        // Create a new food entry object
+        const newEntry = {
+          foodName,
+          calories,
+          // Add other nutritional data properties here
+        };
 
-        document.getElementById('addEntryButton').addEventListener('click', function (event) {
-          event.preventDefault();
-          sendFoodDataToParent();
-        });
-      });
+        // Add the new entry to the existing entries
+        foodEntries.push(newEntry);
+
+        // Store the updated entries back in localStorage
+        localStorage.setItem(meal, JSON.stringify(foodEntries));
+
+        // Redirect back to index.html
+        window.location.href = 'index.html';
+      }
+
+      // Event listener for the "Add Food Entry" button
+      document.getElementById('addEntryButton').addEventListener('click', addFoodEntry);
+
     </script>
   </body>
 </html>

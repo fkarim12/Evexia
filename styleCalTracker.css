@@ -13,17 +13,24 @@
 }
 
 .section-title {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
+    border: 2px solid skyblue;
+}
+
+.table-cals {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #dcd0ff;;
 }
 
 .table td, .table th {
-    border: none;
+    border: skyblue;
     padding: 8px;
 }
 
@@ -43,6 +50,7 @@
     text-align: center;
     margin-bottom: 20px;
     text-decoration: none;
+    font-size: 16px;
 }
 
 ul {
@@ -72,4 +80,5 @@ td.right {
     border-radius: 5px;
     cursor: pointer;
     margin-left: auto; 
+    font-size: 18px;
 }
