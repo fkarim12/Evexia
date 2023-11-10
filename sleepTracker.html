@@ -75,8 +75,18 @@
   const closeButton = document.getElementById("closeButton");
 
   document.addEventListener("DOMContentLoaded", function() {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('date').setAttribute('max', today);
+  // Calculate today's date and the date 7 days ago
+  const today = new Date();
+  today.setHours(23, 59, 59, 999); // Ensure the whole current day is included
+  const lastWeek = new Date(today);
+  lastWeek.setDate(today.getDate() - 6); // 7 days including today
+
+  const formatDate = (date) => date.toISOString().split('T')[0];
+
+  // Set the min and max attributes for the date input
+  document.getElementById('date').setAttribute('max', formatDate(today));
+  document.getElementById('date').setAttribute('min', formatDate(lastWeek));
+
 
     const storedData = localStorage.getItem('sleepData');
     if (storedData) {
@@ -148,7 +158,8 @@
       maintainAspectRatio: false,
       plugins: {
         title: {
-          display: true,       
+          display: true,
+          text: "The Current Week"      
         }
       }
     },
