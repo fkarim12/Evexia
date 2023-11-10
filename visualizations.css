@@ -83,7 +83,7 @@ select, input[type="date"], input[type="number"] {
 }
 
 #enter {
-  background-color: #81f0ff;
+  background-color: skyblue;
   border: none;
   color: black;
   padding: 15px 32px;

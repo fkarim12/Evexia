@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weekly Sleep Tracker Graph</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="sleep.css">
 <link rel="stylesheet" href="stylesAll.css" />
 </head>
 <body>
-
 <main>
-
-<div class="chart-container">
+  <div class="chart-container">
+    <h1>Weekly Sleep Tracker</h1>
     <canvas id="sleepTrackerChart"></canvas>
-</div>
+  </div>
 
-<form id="sleepDataForm">
+<form id="sleepDataForm" style="margin-top: 100px;">
   <label  id ="dayLabel" for="dayOfWeek">Day of Week:</label>
   <br>
   <select id="dayOfWeek" name="dayOfWeek" required>
@@ -83,11 +81,16 @@
       plugins: {
         title: {
           display: true,
-          text: 'Weekly Sleep Tracker Graph'
         }
       }
     },
   };
+
+const sleepTrackerChartContainer = document.querySelector('.chart-container');
+const h1Height = document.querySelector('h1').offsetHeight;
+const marginTopValue = h1Height + 100; // Add extra margin if needed
+sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
+
 
   const sleepTrackerChart = new Chart(
     document.getElementById('sleepTrackerChart'),
