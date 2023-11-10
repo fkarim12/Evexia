@@ -12,24 +12,26 @@ h1 {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 30px;
 }
 
 .percentage-display {
-  margin-top: 20px;
   font-size: 20px;
   text-align: center;
 }
 
 .text {
   font-size: 30px;
-  margin: 10px 0;
   font-weight: normal;
   text-align: center;
 }
 
 h2 {
   text-align: center;
+  margin-top: 0px;
+}
+
+p{
+  margin-top: -10px;
 }
 
 .header1 {
@@ -84,5 +86,4 @@ main {
   position: relative;
   width: 100%;
   height: 300px; /* Adjust the height as needed */
-  margin-top: 20px; /* Adjust the margin as needed */
 }

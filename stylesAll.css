@@ -2,8 +2,10 @@ body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 93vh;
+    min-height: 100vh;
     height: 960px;
+    margin: 0;
+    overflow-y: scroll;
 }
   
 main {
@@ -13,6 +15,8 @@ main {
   overflow-y: auto;
 }
   
+
+
 /* space out tabs evenly across screen*/
 nav ul {
     display: flex;
