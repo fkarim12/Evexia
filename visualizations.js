@@ -55,3 +55,42 @@ document.body.addEventListener('click', function (event) {
     weightForm.classList.remove('scrollable'); // Remove the scrollable class from the form
   }
 });
+
+const learnMoreButton = document.getElementById("learnMoreButton");
+const popOutContainer = document.getElementById("popOutContainer");
+const closeButton = document.getElementById("closeButton");
+
+document.addEventListener("DOMContentLoaded", function() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('max', today);
+
+  const storedData = localStorage.getItem('sleepData');
+  if (storedData) {
+    const parsedData = JSON.parse(storedData);
+    sleepData.labels = parsedData.labels;
+    sleepData.datasets[0].data = parsedData.datasets[0].data;
+    sleepTrackerChart.update();
+  }
+
+});
+
+learnMoreButton.addEventListener("click", function () {
+  //when button is clicked
+  popOutContainer.style.display = "block";
+});
+
+closeButton.addEventListener("click", function () {
+  //when the cross mark is clicked
+  popOutContainer.style.display = "none";
+});
+
+window.addEventListener("click", function (event) {
+  // Close window when clicking outside of it
+  if (
+    event.target !== closeButton &&
+    event.target !== learnMoreButton &&
+    !popOutContainer.contains(event.target)
+  ) {
+    popOutContainer.style.display = "none";
+  }
+});

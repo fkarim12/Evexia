@@ -6,6 +6,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-weight: bold;
     font-size: 25px;
     margin: 4px 2px;
     cursor: pointer;
@@ -94,11 +95,11 @@ form {
   padding: 10px 20px;
   background-color: skyblue;
   color: black;
-  font-weight: bold;
+  font-size: 18px; /* Adjust the font size as needed */
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .header1 {
@@ -137,10 +138,4 @@ main {
   flex: 1;
   padding: 10px;
   overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.pie-chart-container {
-  position: relative;
-  width: 100%;
-  height: 300px; /* Adjust the height as needed */
 }
