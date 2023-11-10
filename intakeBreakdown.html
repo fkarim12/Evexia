@@ -12,14 +12,29 @@
   <body>
     <main>
       <h1>Calorie Intake Breakdown</h1>
-      
       <div class="pie-chart" id="pieChart"></div>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-      <div id="greenPercentageDisplay" class="text"></div>
-      <div id="yellowPercentageDisplay" class="text"></div>
-      <div id="redPercentageDisplay" class="text"></div>  
-        <script src="scriptIntakeBreakdown.js"></script>
+      <p class="text" style="text-decoration: underline;">Today's Food Breakdown</p>
+      <br>
+      <div class="section" style="background-color: steelblue;">
+        <h2 style="text-align: center; color: white;">Carbohydrates</h2>
+        <div class="percentage-display" id="bluePercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
+      </div>
+      
+      <div class="section" style="background-color: sienna;">
+        <h2 style="text-align: center; color: white;">Protein</h2>
+        <div class="percentage-display" id="brownPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
+      </div>
+      
+      <div class="section" style="background-color: darkorange;">
+        <h2 style="text-align: center; color: white;">Fat</h2>
+        <div class="percentage-display" id="redPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
+      </div>
+      <br>
+            <br>
+
+      <script src="scriptIntakeBreakdown.js"></script>
     </main>
     <nav>
       <ul>

@@ -1,18 +1,12 @@
 h1 {
   margin-left: .5rem;
   text-align: center;
-  margin-bottom: 30px
+  margin-bottom: 30px; /* Add the missing semicolon here */
 }
 
 .pie-chart {
-  width: 200px;
-  height: 200px;
-  background: conic-gradient(
-    from 0deg,
-    palegreen 33%,
-    lightgoldenrodyellow 33% 66%,
-    lightcoral 66% 100%
-  );
+  width: 250px; /* Increase the width */
+  height: 250px; /* Increase the height */
   border-radius: 50%;
   cursor: pointer;
   position: absolute;
@@ -28,8 +22,12 @@ h1 {
 }
 
 .text {
-  font-size: 25px;
-  padding-left: 30px;
+  font-size: 30px;
   margin: 10px 0;
-  font-weight: normal; 
+  font-weight: normal;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
 }
