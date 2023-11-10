@@ -49,10 +49,49 @@
 
   <button id = "enter"type="submit">Add Sleep Data</button>
 
-
 </form>
 
+<div class="header1">
+  <button class="learn-button" id="learnMoreButton">Learn More</button>
+</div>
+
+<div class="pop-out-container" id="popOutContainer">
+  <span class="close-button" id="closeButton">&times;</span>
+  <div class="pop-out-content">
+    Good sleep improves your brain performance, mood, and health. 
+    Not getting enough quality sleep regularly can bring risks of many different diseases and/or disorders. <br><br>
+    Younger school-age children should get at least nine hours a night.<br><br>
+    Teenagers should get between eight and 10 hours of sleep a night. <br><br> 
+    Most adults need at least seven hours or more of sleep each night.  </div>
+</div>  
+<br>
+
 <script>
+  const learnMoreButton = document.getElementById("learnMoreButton");
+const popOutContainer = document.getElementById("popOutContainer");
+const closeButton = document.getElementById("closeButton");
+
+learnMoreButton.addEventListener("click", function () {
+  //when button is clicked
+  popOutContainer.style.display = "block";
+});
+
+closeButton.addEventListener("click", function () {
+  //when the cross mark is clicked
+  popOutContainer.style.display = "none";
+});
+
+window.addEventListener("click", function (event) {
+  //close window
+  if (
+    event.target !== learnMoreButton &&
+    event.target !== closeButton &&
+    !popOutContainer.contains(event.target)
+  ) {
+    popOutContainer.style.display = "none";
+  }
+});
+
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   const sleepData = {
