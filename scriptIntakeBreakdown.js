@@ -31,3 +31,28 @@ function updatePieChart() {
 
 // Call updatePieChart() on page load
 updatePieChart();
+
+const learnMoreButton = document.getElementById("learnMoreButton");
+const popOutContainer = document.getElementById("popOutContainer");
+const closeButton = document.getElementById("closeButton");
+
+learnMoreButton.addEventListener("click", function () {
+  //when button is clicked
+  popOutContainer.style.display = "block";
+});
+
+closeButton.addEventListener("click", function () {
+  //when the cross mark is clicked
+  popOutContainer.style.display = "none";
+});
+
+window.addEventListener("click", function (event) {
+  //close window
+  if (
+    event.target !== learnMoreButton &&
+    event.target !== closeButton &&
+    !popOutContainer.contains(event.target)
+  ) {
+    popOutContainer.style.display = "none";
+  }
+});

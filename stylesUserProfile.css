@@ -15,18 +15,19 @@
   .edit-button {
     padding: 10px 20px;
     background-color: skyblue;
-    color: white;
+    color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-left: auto; 
 }
 
-
   .save-button {
     padding: 10px 20px;
     background-color: mediumspringgreen;
     color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -35,7 +36,8 @@
   .cancel-button {
     padding: 10px 20px;
     background-color: tomato;
-    color: white;
+    color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;

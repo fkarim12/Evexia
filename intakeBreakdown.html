@@ -12,27 +12,45 @@
   <body>
     <main>
       <h1>Calorie Intake Breakdown</h1>
+
+      <div class="header1">
+        <button class="learn-button" id="learnMoreButton">Learn More</button>
+      </div>
+    
+      <div class="pop-out-container" id="popOutContainer">
+        <span class="close-button" id="closeButton">&times;</span>
+        <div class="pop-out-content">
+          Carbohydrates: sugars that the body uses for energy. Foods: bread, beans, milk, potatoes. <br>
+          A person needs 130 g daily. Around 45–65% of one's daily calorie intake should be from carbs. <br><br>
+
+          Protein: helps the body grow, builds muscle and give us energy. Foods: meats, eggs, avocado, nuts. <br>
+          Females need 46 g and males need 56 g per day. Around 10–30% of their daily calorie intake should be from protein. <br><br>
+
+          Fat: helps the body grow and process vitamins. Foods: chocolate, butter, cheese, bacon. <br>
+          Around 20%-30% of calorie intake per day should be from fat. 
+        </div>
+      </div>  
+
       <div class="pie-chart" id="pieChart"></div>
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
       <p class="text" style="text-decoration: underline;">Today's Food Breakdown</p>
       <br>
-      <div class="section" style="background-color: steelblue;">
+      <div class="section" style="background-color: steelblue; border-radius: 5px;">
         <h2 style="text-align: center; color: white;">Carbohydrates</h2>
         <div class="percentage-display" id="bluePercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
       </div>
       
-      <div class="section" style="background-color: sienna;">
+      <div class="section" style="background-color: sienna; border-radius: 5px;">
         <h2 style="text-align: center; color: white;">Protein</h2>
         <div class="percentage-display" id="brownPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
       </div>
       
-      <div class="section" style="background-color: darkorange;">
+      <div class="section" style="background-color: darkorange; border-radius: 5px;">
         <h2 style="text-align: center; color: white;">Fat</h2>
         <div class="percentage-display" id="redPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
       </div>
-      <br>
-            <br>
+      <br><br>
 
       <script src="scriptIntakeBreakdown.js"></script>
     </main>
