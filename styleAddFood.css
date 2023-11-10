@@ -75,3 +75,20 @@ select {
     border-radius: 5px;
   }
   
+  #keyboardImage {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  img {
+    width: 640px; 
+    height: 300px; 
+  }
+  
+  #foodForm.scrollable{
+    max-height: 500px;
+    overflow-y: auto;
+  }

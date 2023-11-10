@@ -25,27 +25,27 @@
             </select>
 
             <label for="foodName">Food Name</label>
-            <input type="text" id="foodName" name="foodName" required>
+            <input type="text" id="foodName" name="foodName" required onclick="showKeyboard(event, 'keyboardImage')">
         
             <br>
         
             <label for="calories">Calories</label>
-            <input type="number" id="calories" name="calories" required pattern="[0-9]+">
+            <input type="number" id="calories" name="calories" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
         
             <br>
         
             <label for="carbs">Carbohydrates (g)</label>
-            <input type="number" id="carbs" name="carbs" required pattern="[0-9]+">
+            <input type="number" id="carbs" name="carbs" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
         
             <br>
 
             <label for="proteins">Proteins (g)</label>
-            <input type="number" id="proteins" name="proteins" required pattern="[0-9]+">
+            <input type="number" id="proteins" name="proteins" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
             
             <br>
             
             <label for="fats">Fats (g)</label>
-            <input type="number" id="fats" name="fats" required pattern="[0-9]+">
+            <input type="number" id="fats" name="fats" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
 
             <br><br>
         
@@ -57,6 +57,8 @@
         
         </div>
       </div>
+      <img id="keyboardImage" src="screenKeyboard.png" alt="keyboard">
+
     </main>
 
     <nav>
@@ -70,7 +72,34 @@
     </nav> 
     
     <script>
-      // Function to handle addition of food entries
+function showKeyboard(event, imageId) {
+  event.stopPropagation(); // Stop the event from propagating to document.body
+  var keyboardImage = document.getElementById(imageId);
+  keyboardImage.style.display = 'block';
+
+  var foodForm = document.getElementById('foodForm');
+  foodForm.classList.add('scrollable'); // Add the scrollable class to the form
+
+  // Calculate the distance to scroll based on the target pixel value
+  var scrollDistance = Math.max(0, keyboardImage.getBoundingClientRect().top - 640);
+
+  // Scroll the page up until the bottom of the page reaches pixel 640
+  window.scrollBy(0, -scrollDistance);
+}
+
+// Hide the keyboard image and remove the class when the screen is clicked elsewhere
+document.body.addEventListener('click', function (event) {
+  if (event.target.id !== 'keyboardImage') {
+    document.getElementById('keyboardImage').style.display = 'none';
+
+    var foodForm = document.getElementById('foodForm');
+    foodForm.classList.remove('scrollable'); // Remove the scrollable class from the form
+  }
+});
+
+
+
+    // Function to handle addition of food entries
       function addFoodEntry() {
         // Retrieve form inputs
         const meal = document.getElementById('meal').value;
