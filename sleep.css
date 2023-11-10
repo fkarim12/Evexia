@@ -18,6 +18,11 @@
     background: linear-gradient(135deg, #0056b3, #1e4f79);
 }
 
+h1{
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -35,7 +40,6 @@ select, input[type="date"], input[type="time"] {
   padding: 12px;
   font-size: 17px;
   border: none;
-  font-style: italic;
   background-color: rgba(154, 152, 152, 0.1);
   border-radius: 4px;
   margin-bottom: 20px;
