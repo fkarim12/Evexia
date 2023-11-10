@@ -133,3 +133,28 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Disable scrolling for the whole body */
+}
+
+.container {
+  height: 960px; /* Set the height to create a dead zone */
+  overflow-y: scroll; /* Enable scrolling for the container */
+  position: relative; /* Set position to relative to position absolute child elements */
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
