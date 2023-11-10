@@ -15,18 +15,19 @@
   .edit-button {
     padding: 10px 20px;
     background-color: skyblue;
-    color: white;
+    color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-left: auto; 
 }
 
-
   .save-button {
     padding: 10px 20px;
     background-color: mediumspringgreen;
     color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -35,7 +36,8 @@
   .cancel-button {
     padding: 10px 20px;
     background-color: tomato;
-    color: white;
+    color: black;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -83,12 +85,12 @@ h3 input {
 
 input[type="text"],
 input[type="email"],
-input[type="number"] {
+input[type="number"], select {
     width: 400px; /* Set the width of the input elements to 100% */
     padding: 10px; /* Add padding inside the text boxes */
     border: 1px solid #ccc; /* Add a border to the text boxes */
     border-radius: 10px; /* Add rounded edges */
-    margin-bottom: 10px; /* Add vertical margin between input elements */
+    margin-bottom: 0px; /* Add vertical margin between input elements */
 }
 
 #keyboardImage {
@@ -106,4 +108,53 @@ body {
 .scrollable-h3 {
   max-height: 190px;
   overflow-y: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.pop-out-container {
+  font-size: 25px;
+  display: none;
+  position: fixed;
+  width: 400px; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: coral;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Disable scrolling for the whole body */
+}
+
+.container {
+  height: 960px; /* Set the height to create a dead zone */
+  overflow-y: scroll; /* Enable scrolling for the container */
+  position: relative; /* Set position to relative to position absolute child elements */
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

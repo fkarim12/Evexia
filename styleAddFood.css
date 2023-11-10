@@ -10,6 +10,7 @@
 
 h1 {
     text-align: center;
+    margin-left: .5rem;
 }
 
 label {
@@ -43,4 +44,15 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    background-color: skyblue;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto; 
 }

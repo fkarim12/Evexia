@@ -12,27 +12,47 @@
   <body>
     <main>
       <h1>Calorie Intake Breakdown</h1>
-      <div class="pie-chart" id="pieChart"></div>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+      <div class="header1">
+        <img id="colorblind" src="colorblind.png" alt="colorblind toggle" style="width: 30px; height: 30px; cursor: pointer" />
+        <!-- <img id="colorblind" src="colorblind.png" alt="colorblind toggle" style="width: 30px; height: 30px; cursor: pointer" onclick="toggleColorblindMode()" /> -->
+
+        <button class="learn-button" id="learnMoreButton">Learn More</button>
+      </div>
+    
+      <div class="pop-out-container" id="popOutContainer">
+        <span class="close-button" id="closeButton">&times;</span>
+        <div class="pop-out-content">
+          Carbohydrates: sugars that the body uses for energy. Foods: bread, beans, milk, potatoes. <br>
+          A person needs 130 g daily. Around 45–65% of one's daily calorie intake should be from carbs. <br><br>
+
+          Protein: helps the body grow, builds muscle and give us energy. Foods: meats, eggs, avocado, nuts. <br>
+          Females need 46 g and males need 56 g per day. Around 10–30% of their daily calorie intake should be from protein. <br><br>
+
+          Fat: helps the body grow and process vitamins. Foods: chocolate, butter, cheese, bacon. <br>
+          Around 20%-30% of calorie intake per day should be from fat. 
+        </div>
+      </div>  
+      <br>
+      <div class="pie-chart-container">
+        <div class="pie-chart" id="pieChart"></div>
+      </div>
+      <br>
       <p class="text" style="text-decoration: underline;">Today's Food Breakdown</p>
-      <br>
-      <div class="section" style="background-color: steelblue;">
-        <h2 style="text-align: center; color: white;">Carbohydrates</h2>
-        <div class="percentage-display" id="bluePercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
+      <div class="section" style="border-radius: 5px;">
+        <h2 style="text-align: center; color: black;">Carbohydrates</h2>
+        <div class="percentage-display" id="bluePercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: black;"></div>
       </div>
       
-      <div class="section" style="background-color: sienna;">
-        <h2 style="text-align: center; color: white;">Protein</h2>
-        <div class="percentage-display" id="brownPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
+      <div class="section" style="border-radius: 5px;">
+        <h2 style="text-align: center; color: black;">Protein</h2>
+        <div class="percentage-display" id="brownPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: black;"></div>
       </div>
       
-      <div class="section" style="background-color: darkorange;">
-        <h2 style="text-align: center; color: white;">Fat</h2>
-        <div class="percentage-display" id="redPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: white;"></div>
+      <div class="section" style="border-radius: 5px;">
+        <h2 style="text-align: center; color: black;">Fat</h2>
+        <div class="percentage-display" id="redPercentageDisplay" style="margin-top: 10px; font-size: 20px; text-align: center; color: black;"></div>
       </div>
-      <br>
-            <br>
 
       <script src="scriptIntakeBreakdown.js"></script>
     </main>

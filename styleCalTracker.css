@@ -8,6 +8,8 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .section-title {
@@ -59,4 +61,15 @@ td.left {
 
 td.right {
     text-align: right;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    background-color: skyblue;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto; 
 }
