@@ -1,180 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evexia</title>
-    <link rel="stylesheet" href="stylesAll.css" />
-    <link rel="stylesheet" href="styleCalTracker.css" />
 
-    <script>
-      // Variables to store the data
-      var bluePercentage = 50;
-      var brownPercentage = 20;
-      var redPercentage = 30;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evexia</title>
+  <link rel="stylesheet" href="stylesAll.css" />
+  <link rel="stylesheet" href="styleCalTracker.css" />
 
-      // Store the variables in localStorage
-      localStorage.setItem('bluePercentage', bluePercentage);
-      localStorage.setItem('brownPercentage', brownPercentage);
-      localStorage.setItem('redPercentage', redPercentage);
+  <script>
+    // Variables to store the data
+    var carboPercent = 50;
+    var proteinPercent = 20;
+    var fatPercent = 30;
 
-      var calGoal = localStorage.getItem('calGoal');
-      if (!calGoal) { //if no default
-        calGoal = 2000;
-      }
-    </script>
+    // Store the variables in localStorage
+    localStorage.setItem('carboPercent', carboPercent);
+    localStorage.setItem('proteinPercent', proteinPercent);
+    localStorage.setItem('fatPercent', fatPercent);
 
-  </head>
+    var calGoal = localStorage.getItem('goal');
+    if (!calGoal) { //if no default
+      calGoal = 2000;
+    }
+  </script>
 
-  <body>
-    <main>
-      <div class="container">
-        <h1>Calorie Tracker</h1>
-  
-        <div class="section invisible-lines;" style="background-color: #dcd0ff;">
-            <table class="custom-table">
-              <tr style="font-size: 22px;">
-                <th class="table-header">Calories</th>
-                <th class="table-header">Goal</th>
-                <th class="table-header">Net</th>
-              </tr>
-              <tr style="font-size: 20px;">
-              <td id="caloriesCell">0</td>
-              <td id="goalCell">2000</td>
-              <td id="netCell">0</td>
-              </tr>
-            </table>
-        </div>
-  
-        <div class="section" style="background-color: skyblue;">
-          <div class="section-title">Breakfast</div>
-          <br>
-          <table id="breakfastTable" class="table invisible-lines" style="background-color: skyblue;">
-          </table>
-        </div>
+</head>
 
-        <div class="section" style="background-color: skyblue;">
-          <div class="section-title">Lunch</div>
-          <br>
-          <table id="lunchTable" class="table invisible-lines" style="background-color: skyblue;">
-          </table>
-        </div>
+<body>
+  <main>
+    <div class="container">
+      <h1 style="text-align: center;">Calorie Tracker</h1>
 
-        <div class="section" style="background-color: skyblue;">
-          <div class="section-title">Dinner</div>
-          <br>
-          <table id="dinnerTable" class="table invisible-lines" style="background-color: skyblue;">
-          </table>
-        </div>
-
-        <div class="section" style="background-color: skyblue;">
-          <div class="section-title">Snacks</div>
-          <br>
-          <table id="snacksTable" class="table invisible-lines" style="background-color: skyblue;">
-          </table>
-        </div>
-
-        <div class="header1">
-          <button class="edit-button" onclick="window.location.href='addFood.html'">Add Food</button>
-          <button id="resetButton" class="cancel-button" onclick="resetData()">Reset Data</button>
-        </div>
-        
+      <div class="section invisible-lines;" style="background-color: #dcd0ff;">
+        <table class="custom-table">
+          <tr style="font-size: 22px;">
+            <th class="table-header">Calories</th>
+            <th class="table-header">Goal</th>
+            <th class="table-header">Net</th>
+          </tr>
+          <tr style="font-size: 20px;">
+            <td id="caloriesCell">0</td>
+            <td id="calGoal">2000</td>
+            <td id="netCell">0</td>
+          </tr>
+        </table>
       </div>
-    </main>
 
-    <nav>
-      <ul>
-        <a href="./index.html" class="active"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
-        <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
-        <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
-        <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
-        <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
-      </ul>
-    </nav>
+      <div class="section" style="background-color: skyblue;">
+        <div class="section-title">Breakfast</div>
+        <br>
+        <table id="breakfastTable" class="table invisible-lines" style="background-color: skyblue;">
+        </table>
+      </div>
 
-    <script>
-      // Function to populate the tables with food entries
-      function displayFoodEntries(meal, tableId) {
-        // Get the table element
-        const table = document.getElementById(tableId);
+      <div class="section" style="background-color: skyblue;">
+        <div class="section-title">Lunch</div>
+        <br>
+        <table id="lunchTable" class="table invisible-lines" style="background-color: skyblue;">
+        </table>
+      </div>
 
-        // Retrieve food entries for the specific meal from localStorage
-        let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
+      <div class="section" style="background-color: skyblue;">
+        <div class="section-title">Dinner</div>
+        <br>
+        <table id="dinnerTable" class="table invisible-lines" style="background-color: skyblue;">
+        </table>
+      </div>
 
-        // Populate the table with the retrieved data
-        foodEntries.forEach((entry) => {
-          // Create a new row for each entry
-          const row = table.insertRow();
+      <div class="section" style="background-color: skyblue;">
+        <div class="section-title">Snacks</div>
+        <br>
+        <table id="snacksTable" class="table invisible-lines" style="background-color: skyblue;">
+        </table>
+      </div>
 
-          // Create cells for food name and calories (add other nutritional data as needed)
-          const cell1 = row.insertCell(0);
-          const cell2 = row.insertCell(1);
+      <div class="header1">
+        <button class="edit-button" onclick="window.location.href='addFood.html'">Add Food</button>
+        <button id="resetButton" class="cancel-button" onclick="resetData()">Reset Data</button>
+      </div>
 
-          // Assign values to the cells
-          cell1.textContent = entry.foodName;
-          cell1.style.textAlign = 'left';
+    </div>
+  </main>
 
-          cell2.textContent = entry.calories + ' cals';
-          cell2.style.textAlign = 'right';
-          // Assign other nutritional data to respective cells
-        });
+  <nav>
+    <ul>
+      <a href="./index.html" class="active"><img src="food.jpg" alt="Home" class="nav-icon" /></a>
+      <a href="./intakeBreakdown.html"><img src="macronutrients.png" alt="Calorie Intake" class="nav-icon" /></a>
+      <a href="./visualizations.html"><img src="visualizations.png" alt="Visualizations" class="nav-icon" /></a>
+      <a href="./sleepTracker.html"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
+      <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
+    </ul>
+  </nav>
+
+  <script>
+    // Function to populate the tables with food entries
+    function displayFoodEntries(meal, tableId) {
+      // Get the table element
+      const table = document.getElementById(tableId);
+
+      // Retrieve food entries for the specific meal from localStorage
+      let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
+
+      // Populate the table with the retrieved data
+      foodEntries.forEach((entry) => {
+        // Create a new row for each entry
+        const row = table.insertRow();
+
+        // Create cells for food name and calories (add other nutritional data as needed)
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+
+        // Assign values to the cells
+        cell1.textContent = entry.foodName;
+        cell1.style.textAlign = 'left';
+
+        cell2.textContent = entry.calories + ' cals';
+        cell2.style.textAlign = 'right';
+        // Assign other nutritional data to respective cells
+      });
+    }
+
+    // Call the function for each meal table
+    displayFoodEntries('breakfast', 'breakfastTable');
+    displayFoodEntries('lunch', 'lunchTable');
+    displayFoodEntries('dinner', 'dinnerTable');
+    displayFoodEntries('snacks', 'snacksTable');
+
+    // Function to clear tables and localStorage data
+    function resetData() {
+      // Clear the tables
+      document.getElementById('breakfastTable').innerHTML = '<tr><td></td></tr>';
+      document.getElementById('lunchTable').innerHTML = '<tr><td></td></tr>';
+      document.getElementById('dinnerTable').innerHTML = '<tr><td></td></tr>';
+      document.getElementById('snacksTable').innerHTML = '<tr><td></td></tr>';
+
+      document.getElementById('caloriesCell').textContent = '0';
+      document.getElementById('netCell').textContent = '-' + localStorage.goal;
+
+      // Clear localStorage data
+      localStorage.removeItem('breakfast');
+      localStorage.removeItem('lunch');
+      localStorage.removeItem('dinner');
+      localStorage.removeItem('snacks');
+    }
+
+    // Event listener for the "Reset" button
+    document.getElementById('resetButton').addEventListener('click', resetData);
+
+    function updateTotalCalories() {
+      // Retrieve food entries for each meal from localStorage
+      const breakfastEntries = JSON.parse(localStorage.getItem('breakfast')) || [];
+      const lunchEntries = JSON.parse(localStorage.getItem('lunch')) || [];
+      const dinnerEntries = JSON.parse(localStorage.getItem('dinner')) || [];
+      const snacksEntries = JSON.parse(localStorage.getItem('snacks')) || [];
+
+      // Calculate total calories from each meal
+      let totalCalories = calculateTotalCalories(breakfastEntries)
+        + calculateTotalCalories(lunchEntries)
+        + calculateTotalCalories(dinnerEntries)
+        + calculateTotalCalories(snacksEntries);
+
+      // Get the calGoal from localStorage, default to 2000 if not set
+      const calGoal = localStorage.getItem('calGoal') || 2000;
+      const netCalories = totalCalories - calGoal;
+      const netCell = document.getElementById('netCell');
+
+      // Update the total calories cell in the first table
+      document.getElementById('caloriesCell').textContent = totalCalories;
+
+      // Update the calGoal cell
+      document.getElementById('calGoal').textContent = calGoal;
+
+      // Update the net calories cell with the appropriate sign
+      if (netCalories >= 0) {
+        netCell.textContent = '+' + netCalories;
+      } else {
+        netCell.textContent = netCalories;
       }
+    }
 
-      // Call the function for each meal table
-      displayFoodEntries('breakfast', 'breakfastTable');
-      displayFoodEntries('lunch', 'lunchTable');
-      displayFoodEntries('dinner', 'dinnerTable');
-      displayFoodEntries('snacks', 'snacksTable');
+    // Helper function to calculate total calories for a given meal
+    function calculateTotalCalories(entries) {
+      let totalCalories = 0;
+      entries.forEach((entry) => {
+        totalCalories += parseInt(entry.calories);
+      });
+      return totalCalories;
+    }
 
-      // Function to clear tables and localStorage data
-      function resetData() {
-        // Clear the tables
-        document.getElementById('breakfastTable').innerHTML = '<tr><td></td></tr>';
-        document.getElementById('lunchTable').innerHTML = '<tr><td></td></tr>';
-        document.getElementById('dinnerTable').innerHTML = '<tr><td></td></tr>';
-        document.getElementById('snacksTable').innerHTML = '<tr><td></td></tr>';
+    
+    // Call the function initially to set the initial total calories
+    updateTotalCalories();
 
-        document.getElementById('caloriesCell').textContent = '0';
-        document.getElementById('netCell').textContent = '-' + localStorage.goal;
+  </script>
+</body>
 
-        // Clear localStorage data
-        localStorage.removeItem('breakfast');
-        localStorage.removeItem('lunch');
-        localStorage.removeItem('dinner');
-        localStorage.removeItem('snacks');
-      }
-
-      // Event listener for the "Reset" button
-      document.getElementById('resetButton').addEventListener('click', resetData);
-
-      function updateTotalCalories() {
-        const breakfastEntries = JSON.parse(localStorage.getItem('breakfast')) || [];
-        let totalCalories = 0;
-
-        // Calculate total calories from breakfast entries
-        breakfastEntries.forEach((entry) => {
-          totalCalories += parseInt(entry.calories);
-        });
-
-        const goal = 2000; // Example daily goal, you can fetch this from localStorage
-        const netCalories = totalCalories - goal;
-        const netCell = document.getElementById('netCell');
-
-        // Update the total calories cell in the first table
-        document.getElementById('caloriesCell').textContent = totalCalories;
-
-        // Update the net calories cell with the appropriate sign
-        if (netCalories >= 0) {
-          netCell.textContent = '+' + netCalories;
-        } else {
-          netCell.textContent = netCalories;
-  }
-      }
-
-      // Call the function initially to set the initial total calories
-      updateTotalCalories();
-
-    </script>
-  </body>
 </html>

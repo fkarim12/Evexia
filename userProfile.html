@@ -40,31 +40,34 @@
         document.getElementById('savedWeight').innerText = localStorage.getItem('weight');
         document.getElementById('savedGoalWeight').innerText = localStorage.getItem('goalWeight');
         document.getElementById('savedGoals').innerText = localStorage.getItem('goals');
-
+      
+        // Function to update calGoal based on user goals
         function updateCalGoal() {
-          var goalsDropdown = document.getElementById("goals");
-          var selectedOption = goalsDropdown.options[goalsDropdown.selectedIndex].value;
+    var goalsDropdown = document.getElementById("goals");
+    var selectedOption = goalsDropdown.options[goalsDropdown.selectedIndex].value;
 
-          switch (selectedOption) {
-              case "Gain Weight":
-                  calGoal = 2400;
-                  break;
-              case "Maintain Weight or Live a Healthy Lifestyle":
-                  calGoal = 2000;
-                  break;
-              case "Lose Weight":
-                  calGoal = 1600;
-                  break;
-              default:
-                  calGoal = 0;
-                  break;
-          }
+    switch (selectedOption) {
+      case "Gain Weight":
+        calGoal = 2400;
+        break;
+      case "Maintain Weight or Live a Healthy Lifestyle":
+        calGoal = 2000;
+        break;
+      case "Lose Weight":
+        calGoal = 1600;
+        break;
+      default:
+        calGoal = 2000;
+        break;
+    }
 
-          localStorage.setItem('calGoal', calGoal);
-        }
-
+    localStorage.setItem('calGoal', calGoal);
+  }
+      
+        // Call the updateCalGoal function initially to set the initial calGoal
+        updateCalGoal();
       </script>
-        
+              
     </main>
     <nav>
       <ul>
