@@ -43,7 +43,7 @@ select, input[type="date"], input[type="time"] {
   font-size: 17px;
   border: none;
   background-color: white;
-  border-radius: 4px;
+  border-radius: 10px;
   margin-bottom: 20px;
   margin-top: 10px;
   outline: none;

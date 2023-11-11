@@ -24,28 +24,15 @@ input[type="text"], input[type="number"] {
     width: 96%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 10px;
     font-size: 20px;
-}
-
-input[type="submit"] {
-    background-color: #D1E9F3;
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #D1E9F3;
 }
 
 select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 10px;
     font-size: 20px;
 }
 
@@ -55,7 +42,7 @@ select {
   
   .edit-button {
     float: left;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 18px;
     background-color: skyblue;
     color: black;
@@ -66,7 +53,7 @@ select {
   
   .cancel-button {
     float: right;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 18px;
     background-color: tomato;
     color: black;
