@@ -13,7 +13,7 @@
 }
 
 .section-title {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
 }
 
@@ -63,6 +63,10 @@ ul li {
     margin-bottom: 5px;
 }
 
+td {
+    font-size: 24px;
+}
+
 td.left {
     text-align: left;
 }
@@ -109,7 +113,7 @@ td.right {
     background-color: skyblue;
     color: black;
     font-weight: bold;
-    font-size: 18px; /* Adjust the font size as needed */
+    font-size: 20px; /* Adjust the font size as needed */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -119,7 +123,7 @@ td.right {
   .cancel-button {
     float: right;
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: tomato;
     color: black;
     font-weight: bold;

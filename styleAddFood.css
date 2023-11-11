@@ -17,7 +17,7 @@ label {
     display: block;
     margin: 10px 0;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 input[type="text"], input[type="number"] {
@@ -25,7 +25,7 @@ input[type="text"], input[type="number"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 select {
@@ -33,7 +33,7 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .header1 {
@@ -43,7 +43,7 @@ select {
   .edit-button {
     float: left;
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: skyblue;
     color: black;
     font-weight: bold;
@@ -54,7 +54,7 @@ select {
   .cancel-button {
     float: right;
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: tomato;
     color: black;
     font-weight: bold;
