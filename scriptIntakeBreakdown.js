@@ -1,13 +1,13 @@
 const sections = document.querySelectorAll('.section');
 
-const bluePercentage = parseInt(localStorage.getItem('bluePercentage')) || 33;
-const brownPercentage = parseInt(localStorage.getItem('brownPercentage')) || 33;
-const redPercentage = parseInt(localStorage.getItem('redPercentage')) || 33;
+const carboPercent = parseInt(localStorage.getItem('carboPercent')) || 33;
+const proteinPercent = parseInt(localStorage.getItem('proteinPercent')) || 33;
+const fatPercent = parseInt(localStorage.getItem('fatPercent')) || 33;
 
 const pieChart = document.getElementById('pieChart');
-const bluePercentageDisplay = document.getElementById('bluePercentageDisplay');
-const brownPercentageDisplay = document.getElementById('brownPercentageDisplay');
-const redPercentageDisplay = document.getElementById('redPercentageDisplay');
+const carboPercentageDisplay = document.getElementById('carboPercentageDisplay');
+const proteinPercentageDisplay = document.getElementById('proteinPercentageDisplay');
+const fatPercentageDisplay = document.getElementById('fatPercentageDisplay');
 
 let notcolorblindMode = true; // Default mode is not colorblind
 
@@ -36,11 +36,11 @@ updateColors();
 
 
 function updatePieChart() {
-  const totalPercentage = bluePercentage + brownPercentage + redPercentage;
+  const totalPercentage = carboPercent + proteinPercent + fatPercent;
 
-  const blueAngle = (bluePercentage / totalPercentage) * 360;
-  const brownAngle = (brownPercentage / totalPercentage) * 360;
-  const redAngle = (redPercentage / totalPercentage) * 360;
+  const blueAngle = (carboPercent / totalPercentage) * 360;
+  const brownAngle = (proteinPercent / totalPercentage) * 360;
+  const redAngle = (fatPercent / totalPercentage) * 360;
 
   // Set pie chart colors dynamically
   pieChart.style.background = `conic-gradient(
@@ -50,9 +50,9 @@ function updatePieChart() {
     ${getComputedStyle(sections[2]).backgroundColor} ${blueAngle + brownAngle}deg ${blueAngle + brownAngle + redAngle}deg
   )`;
 
-  bluePercentageDisplay.innerHTML = `<strong>${bluePercentage}%</strong>`;
-  brownPercentageDisplay.innerHTML = `<strong>${brownPercentage}%</strong>`;
-  redPercentageDisplay.innerHTML = `<strong>${redPercentage}%</strong>`;
+  carboPercentageDisplay.innerHTML = `<strong>${carboPercent}%</strong>`;
+  proteinPercentageDisplay.innerHTML = `<strong>${proteinPercent}%</strong>`;
+  fatPercentageDisplay.innerHTML = `<strong>${fatPercent}%</strong>`;
 }
 
 updatePieChart();
