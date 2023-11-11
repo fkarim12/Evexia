@@ -9,23 +9,6 @@
   <link rel="stylesheet" href="stylesAll.css" />
   <link rel="stylesheet" href="styleCalTracker.css" />
 
-  <script>
-    // Variables to store the data
-    var carboPercent = 33;
-    var proteinPercent = 34;
-    var fatPercent = 33;
-
-    // Store the variables in localStorage
-    localStorage.setItem('carboPercent', carboPercent);
-    localStorage.setItem('proteinPercent', proteinPercent);
-    localStorage.setItem('fatPercent', fatPercent);
-
-    if (!calGoal) { //if no default
-      calGoal = 2000;
-    } 
-
-  </script>
-
 </head>
 
 <body>
@@ -85,6 +68,7 @@
         <button class="edit-button" onclick="window.location.href='addFood.html'">Add Food</button>
         <button id="resetButton" class="cancel-button" onclick="resetData()">Reset Data</button>
       </div>
+      <!-- <span id="displayValue"></span> -->
 
     </div>
   </main>
@@ -167,6 +151,7 @@
         + calculateTotalCalories(dinnerEntries)
         + calculateTotalCalories(snacksEntries);
 
+
       // Get the calGoal from localStorage, default to 2000 if not set
       const calGoal = localStorage.getItem('calGoal') || 2000;
       const netCalories = totalCalories - calGoal;
@@ -191,12 +176,111 @@
       let totalCalories = 0;
       entries.forEach((entry) => {
         totalCalories += parseInt(entry.calories);
+
       });
       return totalCalories;
     }
 
     // Call the function initially to set the initial total calories
     updateTotalCalories();
+
+
+    function calculateTotalCarbs(entries) {
+    let totalCarbs = 0;
+    entries.forEach((entry) => {
+      totalCarbs += parseInt(entry.carbs); // Assuming each entry has a 'carbs' property
+    });
+    return totalCarbs;
+  }
+
+
+  // Function to update the total carbohydrates across all meals
+  function updateTotalCarbs() {
+    // Retrieve food entries for each meal from localStorage
+    const breakfastEntries = JSON.parse(localStorage.getItem('breakfast')) || [];
+    const lunchEntries = JSON.parse(localStorage.getItem('lunch')) || [];
+    const dinnerEntries = JSON.parse(localStorage.getItem('dinner')) || [];
+    const snacksEntries = JSON.parse(localStorage.getItem('snacks')) || [];
+
+    // Calculate total carbohydrates from each meal
+    let totCarb = calculateTotalCarbs(breakfastEntries)
+      + calculateTotalCarbs(lunchEntries)
+      + calculateTotalCarbs(dinnerEntries)
+      + calculateTotalCarbs(snacksEntries);
+
+    return totCarb;
+  }
+
+  function calculateTotalProtein(entries) {
+  let totalProtein = 0;
+  entries.forEach((entry) => {
+    totalProtein += parseInt(entry.proteins) || 0; // Assuming each entry has a 'protein' property
+  });
+  return totalProtein;
+  }
+
+  // Function to update the total carbohydrates across all meals
+  function updateTotalProtein() {
+    // Retrieve food entries for each meal from localStorage
+    const breakfastEntries = JSON.parse(localStorage.getItem('breakfast')) || [];
+    const lunchEntries = JSON.parse(localStorage.getItem('lunch')) || [];
+    const dinnerEntries = JSON.parse(localStorage.getItem('dinner')) || [];
+    const snacksEntries = JSON.parse(localStorage.getItem('snacks')) || [];
+
+    // Calculate total carbohydrates from each meal
+    let totProtein = calculateTotalProtein(breakfastEntries)
+      + calculateTotalProtein(lunchEntries)
+      + calculateTotalProtein(dinnerEntries)
+      + calculateTotalProtein(snacksEntries);
+    return totProtein;
+  }
+
+  function calculateTotalFat(entries) {
+    let totalFat = 0;
+    entries.forEach((entry) => {
+      totalFat += parseInt(entry.fats) || 0; // Assuming each entry has a 'fat' property
+    });
+    return totalFat;
+  }
+
+  // Function to update the total carbohydrates across all meals
+  function updateTotalFat() {
+    // Retrieve food entries for each meal from localStorage
+    const breakfastEntries = JSON.parse(localStorage.getItem('breakfast')) || [];
+    const lunchEntries = JSON.parse(localStorage.getItem('lunch')) || [];
+    const dinnerEntries = JSON.parse(localStorage.getItem('dinner')) || [];
+    const snacksEntries = JSON.parse(localStorage.getItem('snacks')) || [];
+
+    // Calculate total carbohydrates from each meal
+    let totFat = calculateTotalFat(breakfastEntries)
+      + calculateTotalFat(lunchEntries)
+      + calculateTotalFat(dinnerEntries)
+      + calculateTotalFat(snacksEntries);
+    return totFat;
+
+  }
+
+    var totCarbs = updateTotalCarbs();
+    var totProtein = updateTotalProtein();
+    var totFat = updateTotalFat();
+    var total = totCarbs + totProtein + totFat;
+
+
+
+    // Calculate the percentage of each variable
+    var carboPercent = Math.round((totCarbs / total) * 100);
+    var proteinPercent = Math.round((totProtein / total) * 100);
+    var fatPercent = 100 - carboPercent - proteinPercent;
+    // document.getElementById('displayValue').textContent = fatPercent;
+
+
+    // Store the variables in localStorage
+    localStorage.setItem('carboPercent', carboPercent);
+    localStorage.setItem('proteinPercent', proteinPercent);
+    localStorage.setItem('fatPercent', fatPercent);
+
+    // console.log(carboPercent, proteinPercent, fatPercent);
+
 
   </script>
 </body>

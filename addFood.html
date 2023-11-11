@@ -100,53 +100,55 @@ document.body.addEventListener('click', function (event) {
 
 
     // Function to handle addition of food entries
-      function addFoodEntry() {
-        // Retrieve form inputs
-        const meal = document.getElementById('meal').value;
-        const foodName = document.getElementById('foodName').value;
-        const calories = document.getElementById('calories').value;
-        const carbs = document.getElementById('carbs').value;
-        const proteins = document.getElementById('proteins').value;
-        const fats = document.getElementById('fats').value;
+    function addFoodEntry() {
+  // Retrieve form inputs
+  const meal = document.getElementById('meal').value;
+  const foodName = document.getElementById('foodName').value;
+  const calories = parseInt(document.getElementById('calories').value);
+  const carbs = parseInt(document.getElementById('carbs').value);
+  const proteins = parseInt(document.getElementById('proteins').value);
+  const fats = parseInt(document.getElementById('fats').value);
 
-        // Check if all fields are filled out
-        if (!meal || !foodName || !calories || !carbs || !proteins || !fats) {
-          // Display a pop-out with an error message
-          const popOutContainer = document.getElementById('popOutContainer');
-          const popOutMessage = document.getElementById('popOutMessage');
-          const closeButton = document.getElementById('closeButton');
+  // Check if all fields are filled out and the values are valid numbers
+  if (!meal || !foodName || isNaN(calories) || isNaN(carbs) || isNaN(proteins) || isNaN(fats)) {
+    // Display a pop-out with an error message
+    const popOutContainer = document.getElementById('popOutContainer');
+    const popOutMessage = document.getElementById('popOutMessage');
+    const closeButton = document.getElementById('closeButton');
 
-          popOutMessage.innerText = 'Please fill out all fields before adding a food entry';
+    popOutMessage.innerText = 'Please fill out all fields with valid numeric values before adding a food entry';
 
-          popOutContainer.style.display = 'block';
+    popOutContainer.style.display = 'block';
 
-          closeButton.addEventListener('click', function () {
-            // When the close button is clicked
-            popOutContainer.style.display = 'none';
-          });
+    closeButton.addEventListener('click', function () {
+      // When the close button is clicked
+      popOutContainer.style.display = 'none';
+    });
 
-          return false; // Stop the form submission
-        }
+    return false; // Stop the form submission
+  }
 
-        // Get existing food entries from localStorage or initialize an empty array
-        let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
+  // Get existing food entries from localStorage or initialize an empty array
+  let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
 
-        // Create a new food entry object
-        const newEntry = {
-          foodName,
-          calories,
-          // Add other nutritional data properties here
-        };
+  // Create a new food entry object
+  const newEntry = {
+    foodName,
+    calories,
+    carbs,
+    proteins,
+    fats
+  };
 
-        // Add the new entry to the existing entries
-        foodEntries.push(newEntry);
+  // Add the new entry to the existing entries
+  foodEntries.push(newEntry);
 
-        // Store the updated entries back in localStorage
-        localStorage.setItem(meal, JSON.stringify(foodEntries));
+  // Store the updated entries back in localStorage
+  localStorage.setItem(meal, JSON.stringify(foodEntries));
 
-        // Redirect back to index.html
-        window.location.href = 'index.html';
-      }
+  // Redirect back to index.html
+  window.location.href = 'index.html';
+}
     </script>
 
       </body>
