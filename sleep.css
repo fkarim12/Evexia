@@ -118,11 +118,11 @@ form {
 
 #clearDataButton{
   padding: 10px 20px;
-  background-color: rgb(255, 68, 68);
+  background-color: tomato;
   color: black;
   font-size: 18px; /* Adjust the font size as needed */
   border: none;
-  border-radius: 30px;
+  border-radius: 5px;
   cursor: pointer;
   margin-right: auto;
 }
