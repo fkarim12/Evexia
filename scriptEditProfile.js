@@ -16,6 +16,7 @@ window.onload = function () {
         var popOutContainer = document.getElementById('popOutContainer');
         popOutContainer.style.display = 'none'; // Hide the pop-up
     });
+
 };
 
 
@@ -77,6 +78,17 @@ function saveProfile() {
     localStorage.setItem('weight', weight);
     localStorage.setItem('goalWeight', goalWeight);
     localStorage.setItem('goals', goals);
+
+
+    // Retrieve the calorie goal based on the selected goal
+    var calGoal = 2000; // Default value
+    if (goals === 'Lose Weight') {
+        calGoal = 1600;
+    } else if (goals === 'Gain Weight') {
+        calGoal = 2400;
+    }
+
+    localStorage.setItem('calGoal', calGoal); // Store the calorie goal
 
     // Redirect to the user profile page
     window.location.href = 'userProfile.html';
@@ -142,4 +154,3 @@ document.body.addEventListener('click', function (event) {
         h3Element.classList.remove('scrollable-h3');
     }
 });
-

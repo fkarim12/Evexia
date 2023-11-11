@@ -20,10 +20,10 @@
     localStorage.setItem('proteinPercent', proteinPercent);
     localStorage.setItem('fatPercent', fatPercent);
 
-    var calGoal = localStorage.getItem('goal');
     if (!calGoal) { //if no default
       calGoal = 2000;
-    }
+    } 
+
   </script>
 
 </head>
@@ -43,6 +43,11 @@
           <tr style="font-size: 20px;">
             <td id="caloriesCell">0</td>
             <td id="calGoal">2000</td>
+            <script>
+              // Get the calGoal from localStorage, default to 2000 if not set
+              var calGoal = localStorage.getItem('calGoal') || 2000;
+              document.getElementById('calGoal').textContent = calGoal;
+            </script>
             <td id="netCell">0</td>
           </tr>
         </table>
