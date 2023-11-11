@@ -54,9 +54,12 @@
 </form>
 
 
+
 <div class="header1">
+  <button id="clearDataButton" type="button">Clear Sleep Data</button>
   <button class="learn-button" id="learnMoreButton">Learn More</button>
 </div>
+
 
 <div class="pop-out-container" id="popOutContainer">
   <span class="close-button" id="closeButton">&times;</span>
@@ -118,6 +121,20 @@
       popOutContainer.style.display = "none";
     }
   });
+
+  function resetSleepData() {
+  // Reset the data array
+  sleepData.datasets[0].data.fill(0);
+  // Update the chart
+  sleepTrackerChart.update();
+  // Clear the data from localStorage
+  localStorage.removeItem('sleepData');
+}
+
+// Event listener for the clear data button
+document.getElementById('clearDataButton').addEventListener('click', function() {
+  resetSleepData();
+});
 
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -249,6 +266,7 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
     sleepTrackerChart.update();
   }
   // Call resetForNewWeek() to reset every new week
+  
 </script>
 </main>
 

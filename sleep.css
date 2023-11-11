@@ -109,6 +109,24 @@ form {
   padding: 10px 20px; 
 }
 
+.header2{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px; 
+}
+
+#clearDataButton{
+  padding: 10px 20px;
+  background-color: rgb(255, 68, 68);
+  color: black;
+  font-size: 18px; /* Adjust the font size as needed */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: auto;
+}
+
 
 .close-button {
   position: absolute;
