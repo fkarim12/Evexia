@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" href="sleep.css">
-<link rel="stylesheet" href="stylesAll.css" />
-</head>
-<body>
-<main>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="sleep.css">
+    <link rel="stylesheet" href="stylesAll.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Sleep Tracker</h1>
+      
+      <div class="header1">
+        <button class="learn-button" id="learnMoreButton">Learn More</button>
+      </div>
 
-<h1>Sleep Tracker</h1>
-
+    <br>
 <div class="chart-container">
     <canvas id="sleepTrackerChart"></canvas>
-  </div>
+</div>
 
 <form id="sleepDataForm" style="margin-top: 100px;">
   <label  id ="dayLabel" for="dayOfWeek">Day of Week:</label>
@@ -57,7 +61,6 @@
 
 <div class="header1">
   <button id="clearDataButton" type="button">Clear Sleep Data</button>
-  <button class="learn-button" id="learnMoreButton">Learn More</button>
 </div>
 
 

@@ -13,7 +13,12 @@
     <main>
       <div class="container">
         <h1>Add Food</h1>
-       
+        <div class="header1">
+          <button class="return-button" onclick="window.location.href='index.html'">Back</button>
+        </div>
+
+      <br>
+
         <div id="container">
           <form id="foodForm" onsubmit="return validateForm()">
             <label for="meal">Meal</label>
@@ -51,8 +56,15 @@
         
             <div class="header1">
                 <button id="addEntryButton" class="edit-button" onclick="addFoodEntry()">Add Food Entry</button>
-                <button class="cancel-button" onclick="window.location.href='index.html'">Return</button>
             </div>
+
+            <!-- needs fixing: pop-up comes up every time, even if input isn't correct -->
+            <!-- <div class="pop-out-container" id="popOutContainer">
+              <span class="close-button" id="closeButton">&times;</span>
+              <div class="pop-out-content">
+                Success
+              </div>
+            </div>         -->
         </form>
         
         </div>
@@ -72,61 +84,100 @@
     </nav> 
     
     <script>
-function showKeyboard(event, imageId) {
-  event.stopPropagation(); // Stop the event from propagating to document.body
-  var keyboardImage = document.getElementById(imageId);
-  keyboardImage.style.display = 'block';
+      const addEntryButton = document.getElementById("addEntryButton");
+  const popOutContainer = document.getElementById("popOutContainer");
+  const closeButton = document.getElementById("closeButton");
 
-  var foodForm = document.getElementById('foodForm');
-  foodForm.classList.add('scrollable'); // Add the scrollable class to the form
+  document.addEventListener("DOMContentLoaded", function() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('max', today);
 
-  // Calculate the distance to scroll based on the target pixel value
-  var scrollDistance = Math.max(0, keyboardImage.getBoundingClientRect().top - 640);
+    const storedData = localStorage.getItem('sleepData');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      sleepData.labels = parsedData.labels;
+      sleepData.datasets[0].data = parsedData.datasets[0].data;
+      sleepTrackerChart.update();
+    }
 
-  // Scroll the page up until the bottom of the page reaches pixel 640
-  window.scrollBy(0, -scrollDistance);
-}
+  });
 
-// Hide the keyboard image and remove the class when the screen is clicked elsewhere
-document.body.addEventListener('click', function (event) {
-  if (event.target.id !== 'keyboardImage') {
-    document.getElementById('keyboardImage').style.display = 'none';
+  addEntryButton.addEventListener("click", function () {
+    //when button is clicked
+    popOutContainer.style.display = "block";
+  });
+
+  closeButton.addEventListener("click", function () {
+    //when the cross mark is clicked
+    popOutContainer.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    // Close window when clicking outside of it
+    if (
+      event.target !== closeButton &&
+      event.target !== addFoodButton &&
+      !popOutContainer.contains(event.target)
+    ) {
+      popOutContainer.style.display = "none";
+    }
+  });
+
+  function showKeyboard(event, imageId) {
+    event.stopPropagation(); // Stop the event from propagating to document.body
+    var keyboardImage = document.getElementById(imageId);
+    keyboardImage.style.display = 'block';
 
     var foodForm = document.getElementById('foodForm');
-    foodForm.classList.remove('scrollable'); // Remove the scrollable class from the form
+    foodForm.classList.add('scrollable'); // Add the scrollable class to the form
+
+    // Calculate the distance to scroll based on the target pixel value
+    var scrollDistance = Math.max(0, keyboardImage.getBoundingClientRect().top - 640);
+
+    // Scroll the page up until the bottom of the page reaches pixel 640
+    window.scrollBy(0, -scrollDistance);
   }
-});
+
+  // Hide the keyboard image and remove the class when the screen is clicked elsewhere
+  document.body.addEventListener('click', function (event) {
+    if (event.target.id !== 'keyboardImage') {
+      document.getElementById('keyboardImage').style.display = 'none';
+
+      var foodForm = document.getElementById('foodForm');
+      foodForm.classList.remove('scrollable'); // Remove the scrollable class from the form
+    }
+  });
 
 
 
     // Function to handle addition of food entries
     function addFoodEntry() {
-  // Retrieve form inputs
-  const meal = document.getElementById('meal').value;
-  const foodName = document.getElementById('foodName').value;
-  const calories = parseInt(document.getElementById('calories').value);
-  const carbs = parseInt(document.getElementById('carbs').value);
-  const proteins = parseInt(document.getElementById('proteins').value);
-  const fats = parseInt(document.getElementById('fats').value);
+      // Retrieve form inputs
+      const meal = document.getElementById('meal').value;
+      const foodName = document.getElementById('foodName').value;
+      const calories = parseInt(document.getElementById('calories').value);
+      const carbs = parseInt(document.getElementById('carbs').value);
+      const proteins = parseInt(document.getElementById('proteins').value);
+      const fats = parseInt(document.getElementById('fats').value);
 
-  // Check if all fields are filled out and the values are valid numbers
-  if (!meal || !foodName || isNaN(calories) || isNaN(carbs) || isNaN(proteins) || isNaN(fats)) {
-    // Display a pop-out with an error message
-    const popOutContainer = document.getElementById('popOutContainer');
-    const popOutMessage = document.getElementById('popOutMessage');
-    const closeButton = document.getElementById('closeButton');
+      // Check if all fields are filled out and the values are valid numbers
+      if (!meal || !foodName || isNaN(calories) || isNaN(carbs) || isNaN(proteins) || isNaN(fats)) {
+        // Display a pop-out with an error message
+        const popOutContainer = document.getElementById('popOutContainer');
+        const popOutMessage = document.getElementById('popOutMessage');
+        const closeButton = document.getElementById('closeButton');
 
-    popOutMessage.innerText = 'Please fill out all fields with valid numeric values before adding a food entry';
+        popOutMessage.innerText = 'Please fill out all fields with valid numeric values before adding a food entry';
 
-    popOutContainer.style.display = 'block';
+        popOutContainer.style.display = 'block';
 
-    closeButton.addEventListener('click', function () {
-      // When the close button is clicked
-      popOutContainer.style.display = 'none';
-    });
+        closeButton.addEventListener('click', function () {
+          // When the close button is clicked
+          popOutContainer.style.display = 'none';
+        });
 
-    return false; // Stop the form submission
-  }
+        return false; // Stop the form submission
+      }
 
   // Get existing food entries from localStorage or initialize an empty array
   let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
