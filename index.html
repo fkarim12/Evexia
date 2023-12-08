@@ -16,6 +16,25 @@
     <div class="container">
       <h1 style="text-align: center;">Calorie Tracker</h1>
 
+      <div class="header2">
+        <button class="learn-button" id="learnMoreButton">Learn More</button>
+      </div>
+      
+      <div class="pop-out-container" id="popOutContainer">
+        <span class="close-button" id="closeButton">&times;</span>
+        <div class="pop-out-content">
+          Generally, the recommended daily calorie intake is 2,000-2500 calories a day to maintain weight.
+          <br><br>
+          However, if one is trying to lose weight, they should get be in a calorie deficit and consume less than they burn a day. 
+          Therefore, a consumption of 1600-2100 calories is ideal.
+          <Br><br>
+          If one is trying to gain weight, they should be eating more calories than they burn in a day. 
+          Therefore, a consumption of 2400-2900 is ideal. 
+          <br> <br>
+          An important thing to note is that these are recommended calories vary based on age, metabolism, and levels of physical activity. 
+        </div>
+      </div>  
+
       <div class="section invisible-lines;" style="background-color: #dcd0ff;">
         <table class="custom-table">
           <tr style="font-size: 26px;">
@@ -280,6 +299,45 @@
     localStorage.setItem('fatPercent', fatPercent);
 
     // console.log(carboPercent, proteinPercent, fatPercent);
+
+    const learnMoreButton = document.getElementById("learnMoreButton");
+    const popOutContainer = document.getElementById("popOutContainer");
+    const closeButton = document.getElementById("closeButton");
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').setAttribute('max', today);
+
+      const storedData = localStorage.getItem('sleepData');
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        sleepData.labels = parsedData.labels;
+        sleepData.datasets[0].data = parsedData.datasets[0].data;
+        sleepTrackerChart.update();
+      }
+
+    });
+
+    learnMoreButton.addEventListener("click", function () {
+      //when button is clicked
+      popOutContainer.style.display = "block";
+    });
+
+    closeButton.addEventListener("click", function () {
+      //when the cross mark is clicked
+      popOutContainer.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+      // Close window when clicking outside of it
+      if (
+        event.target !== closeButton &&
+        event.target !== learnMoreButton &&
+        !popOutContainer.contains(event.target)
+      ) {
+        popOutContainer.style.display = "none";
+      }
+    });
 
 
   </script>
