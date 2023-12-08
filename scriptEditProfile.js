@@ -3,7 +3,8 @@ window.onload = function () {
     document.getElementById('name').value = localStorage.getItem('name') || '';
     document.getElementById('email').value = localStorage.getItem('email') || '';
     document.getElementById('age').value = localStorage.getItem('age') || '';
-    document.getElementById('height').value = localStorage.getItem('height') || '';
+    document.getElementById('height_feet').value = localStorage.getItem('height_feet') || '';
+    document.getElementById('height_inch').value = localStorage.getItem('height_inch') || '';
     document.getElementById('weight').value = localStorage.getItem('weight') || '';
     document.getElementById('goalWeight').value = localStorage.getItem('goalWeight') || '';
     document.getElementById('goals').value = localStorage.getItem('goals') || '';
@@ -24,7 +25,8 @@ function saveProfile() {
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var age = document.getElementById('age').value;
-    var height = document.getElementById('height').value;
+    var height_feet = document.getElementById('height_feet').value;
+    var height_inch = document.getElementById('height_inch').value;
     var weight = document.getElementById('weight').value;
     var goalWeight = document.getElementById('goalWeight').value;
     var goals = document.getElementById('goals').value;
@@ -50,23 +52,28 @@ function saveProfile() {
     }
 
     // Check height format (number' number")
-    var heightRegex = /^\d+'\s?\d+"$/;
-    if (!heightRegex.test(height)) {
+    if (height_feet < 0) {
         showError(4);
+        return;
+    }
+
+    // Check height inches 
+    if (height_inch < 0 || height_inch > 12) {
+        showError(5);
         return;
     }
 
     // Check weight format (only numbers)
     var weightRegex = /^\d+$/;
     if (!weightRegex.test(weight)) {
-        showError(5);
+        showError(6);
         return;
     }
 
     // Check goal weight format (only numbers)
     var goalWeightRegex = /^\d+$/;
     if (!goalWeightRegex.test(goalWeight)) {
-       showError(5);
+       showError(7);
        return;
     }
 
@@ -74,7 +81,8 @@ function saveProfile() {
     localStorage.setItem('name', name);
     localStorage.setItem('email', email);
     localStorage.setItem('age', age);
-    localStorage.setItem('height', height);
+    localStorage.setItem('height_feet', height_feet);
+    localStorage.setItem('height_inch', height_inch);
     localStorage.setItem('weight', weight);
     localStorage.setItem('goalWeight', goalWeight);
     localStorage.setItem('goals', goals);
@@ -107,9 +115,12 @@ function showError(errorCode) {
             errorMessage = 'Please enter a valid age between 0 and 110.';
             break;
         case 4:
-            errorMessage = 'Please enter height in the format (feet\' inches").';
+            errorMessage = 'Please enter an integer for feet for height greater than or equal to 0.';
             break;
         case 5:
+            errorMessage = 'Please enter inches for height between 0 and 12.'
+            break;
+        case 6:
             errorMessage = 'Please enter weight using only numbers.';
             break;
         default:

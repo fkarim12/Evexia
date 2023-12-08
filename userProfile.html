@@ -36,11 +36,24 @@
         document.getElementById('savedName').innerText = localStorage.getItem('name');
         document.getElementById('savedEmail').innerText = localStorage.getItem('email');
         document.getElementById('savedAge').innerText = localStorage.getItem('age');
-        document.getElementById('savedHeight').innerText = localStorage.getItem('height');
         document.getElementById('savedWeight').innerText = localStorage.getItem('weight');
         document.getElementById('savedGoalWeight').innerText = localStorage.getItem('goalWeight');
         document.getElementById('savedGoals').innerText = localStorage.getItem('goals');
       
+        var heightFeet = localStorage.getItem('height_feet');
+        var heightInch = localStorage.getItem('height_inch');
+
+        if (heightFeet !== null && heightInch !== null && heightFeet != 0 && heightInch != 0) {
+            document.getElementById('savedHeight').innerText = heightFeet + "' " + heightInch + '"';
+        } else if (heightFeet == 0 && heightInch == 0){
+            // Handle the case where either heightFeet or heightInch is not stored in localStorage
+            document.getElementById('savedHeight').innerText = "";
+        } else if (heightFeet != null && heightFeet != 0 && (heightInch == null || heightInch == 0)){
+            document.getElementById('savedHeight').innerText = heightFeet + "' ";
+        } else if (heightInch != null && heightInch != 0 && (heightFeet == null || heightFeet == 0)){
+            document.getElementById('savedHeight').innerText = "0' " + heightInch + '"';
+        }
+
         // Function to update calGoal based on user goals
         function updateCalGoal() {
     var goalsDropdown = document.getElementById("goals");
