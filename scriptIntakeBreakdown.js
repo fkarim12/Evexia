@@ -9,20 +9,11 @@ const carboPercentageDisplay = document.getElementById('carboPercentageDisplay')
 const proteinPercentageDisplay = document.getElementById('proteinPercentageDisplay');
 const fatPercentageDisplay = document.getElementById('fatPercentageDisplay');
 
-let notcolorblindMode = true; // Default mode is not colorblind
-
-const colorblindToggle = document.getElementById("colorblind");
-
-colorblindToggle.addEventListener("click", function () {
-  notcolorblindMode = !notcolorblindMode; // Toggle colorblind mode
-  updateColors(); // Update colors and pie chart
-});
-
-
 function updateColors() {
-  const steelblueColor = notcolorblindMode ? "lightblue" : "steelblue";
-  const rosybrownColor = notcolorblindMode ? "palegoldenrod" : "rosybrown";
-  const darkorangeColor = notcolorblindMode ? "lightsalmon" : "darkorange";
+  // Update the colors in the updateColors function
+  const steelblueColor = "#648FFF";
+  const rosybrownColor = "#DC267F";
+  const darkorangeColor = "#FFB000";
 
   sections[0].style.backgroundColor = steelblueColor;
   sections[1].style.backgroundColor = rosybrownColor;

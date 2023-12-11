@@ -58,9 +58,8 @@
                 <button id="addEntryButton" class="edit-button" onclick="addFoodEntry()">Add Food Entry</button>
             </div>
 
-            <!-- needs fixing: pop-up comes up every time, even if input isn't correct -->
             <div class="pop-out-container" id="popOutContainer">
-              <div class="pop-out-content">
+              <div class="pop-out-content success-message">
                 Success
               </div>
             </div>        
@@ -86,6 +85,7 @@
       const addEntryButton = document.getElementById("addEntryButton");
       const popOutContainer = document.getElementById("popOutContainer");
       const closeButton = document.getElementById("closeButton");
+      let success = false;
 
       document.addEventListener("DOMContentLoaded", function() {
         const today = new Date().toISOString().split('T')[0];
@@ -102,9 +102,12 @@
       });
 
       addEntryButton.addEventListener("click", function () {
-        //when button is clicked
-        popOutContainer.style.display = "block";
+        // When the button is clicked
+        if (success) {
+          popOutContainer.style.display = "block";
+        }
       });
+
 
       closeButton.addEventListener("click", function () {
         //when the cross mark is clicked
@@ -165,7 +168,7 @@
 
         return false; // Stop the form submission
       }
-
+      success=true;
       // Get existing food entries from localStorage or initialize an empty array
       let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
 
