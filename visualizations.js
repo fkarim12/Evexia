@@ -1,35 +1,43 @@
 const calorieData = {
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    datasets: [
+  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  datasets: [
       {
-        label: 'Calories',
-        data: [2000, 1800, 1700, 1900, 2100, 2000, 1800],
-        fill: false,
-        lineTension: 0,
-        borderColor: 'rgba(128,0,128,1)',
-        backgroundColor: 'rgba(128,0,128,0.3)',
-        options: {
-          plugins: {
-            legend: {
-              color: 'rgba(0,0,0,1)'
-            }
-          }
-        }
+          label: 'Calories',
+          data: [2000, 1830, 1975, 1900, 2100, 2000, 1800],
+          backgroundColor: 'rgba(128,0,128,0.3)',
+          borderColor: 'rgba(128,0,128,1)',
+          borderWidth: 1,
       },
-    ],
-  };
-  
+  ],
+};
+
 const calorieCtx = document.getElementById('calorie-chart').getContext('2d');
-new Chart(calorieCtx, {
-  type: 'line',
+const calorieChart = new Chart(calorieCtx, {
+  type: 'bar',
   data: calorieData,
   options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    lineTension: 0,
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        xAxes: [{
+          ticks: {
+              fontSize: 21
+          }
+        }],
+          yAxes: [{
+            ticks: {
+                fontSize: 21
+            }
+          }]
+      },
+      onClick: (event, elements) => {
+          if (elements.length > 0) {
+              const index = elements[0].index;
+              const caloriesClicked = calorieData.datasets[0].data[index];
+          }
+      },
   },
 });
-
 
 function showKeyboard(event, imageId) {
   event.stopPropagation(); // Stop the event from propagating to document.body
@@ -64,13 +72,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('date').setAttribute('max', today);
 
-  const storedData = localStorage.getItem('sleepData');
-  if (storedData) {
-    const parsedData = JSON.parse(storedData);
-    sleepData.labels = parsedData.labels;
-    sleepData.datasets[0].data = parsedData.datasets[0].data;
-    sleepTrackerChart.update();
-  }
+  // const storedData = localStorage.getItem('sleepData');
+  // if (storedData) {
+  //   const parsedData = JSON.parse(storedData);
+  //   sleepData.labels = parsedData.labels;
+  //   sleepData.datasets[0].data = parsedData.datasets[0].data;
+  //   sleepTrackerChart.update();
+  // }
 
 });
 

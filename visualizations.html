@@ -56,13 +56,12 @@
           <option value="11">Dec</option>
       </select><br>
 
-      <label id= "dateLabel" for="date">Date:</label>
+      <label id="dateLabel" for="date" style="font-size: 18px;">Date:</label>
       <br>
-      <input type="date" id="date" name="date" required><br> 
-
+      <input type="date" id="date" name="date" required style="font-size: 18px;"><br>
+      
       <label for="weight">Enter Weight:</label><br>
-      <input type="number" id="weight" name="weight" required onclick="showKeyboard(event, 'keyboardImage')"><br>
-
+      <input type="number" id="weight" name="weight" required onclick="showKeyboard(event, 'keyboardImage')" style="font-size: 18px;"><br>
       <br>
 
       <button id = "enter" type="submit">Add Weight Data</button>
@@ -71,95 +70,100 @@
 
     <script src="visualizations.js"></script>
     <script>
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  const storedWeightData = localStorage.getItem('weightData');
-  const initialWeightData = storedWeightData ? JSON.parse(storedWeightData) : [0, 0, 0, 0, 0, 0, 0];
+      const storedWeightData = localStorage.getItem('weightData');
+      const initialWeightData = storedWeightData ? JSON.parse(storedWeightData) : [0, 0, 0, 0, 0, 0, 0];
 
-  const weightData = {
-    labels: months,
-    datasets: [{
-      label: 'Weight in lbs',
-      backgroundColor: 'rgba(0, 123, 255, 0.5)',
-      borderColor: 'rgba(0, 123, 255, 1)',
-      data: initialWeightData,
-    }],
-  };
-
-  const weightChart = new Chart(document.getElementById('weightChart'), {
-    type: 'bar',
-    data: weightData,
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            suggestedMax: 250,
-          },
+      const weightData = {
+        labels: months,
+        datasets: [{
+          label: 'Weight in lbs',
+          backgroundColor: 'rgba(0, 123, 255, 0.5)',
+          borderColor: 'rgba(0, 123, 255, 1)',
+          data: initialWeightData,
         }],
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Annual Weight Tracker Graph',
+      };
+
+      const weightChart = new Chart(document.getElementById('weightChart'), {
+        type: 'bar',
+        data: weightData,
+        options: {
+          scales: {
+            xAxes: [{
+              ticks: {
+                  fontSize: 21
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                suggestedMax: 250,
+                fontSize: 21
+              },
+            }],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Annual Weight Tracker Graph',
+            },
+          },
         },
-      },
-    },
-  });
+      });
 
-  document.getElementById('weightForm').addEventListener('submit', function (event) {
-  event.preventDefault();
+      document.getElementById('weightForm').addEventListener('submit', function (event) {
+      event.preventDefault();
 
-  const monthSelect = document.getElementById('monthSelect');
-  const selectedMonth = parseInt(monthSelect.value);
-  const selectedDate = new Date(document.getElementById('date').value);
-  const inputMonth = selectedDate.getMonth(); // Get the month (0-11) from the selected date
+      const monthSelect = document.getElementById('monthSelect');
+      const selectedMonth = parseInt(monthSelect.value);
+      const selectedDate = new Date(document.getElementById('date').value + 'T00:00:00');
+      const inputMonth = selectedDate.getMonth(); // Get the month (0-11) from the selected date
 
-  // Check if the selected month matches the month from the selected date
-  if (selectedMonth === inputMonth) {
-    const weight = parseInt(document.getElementById('weight').value);
-    const date = selectedDate.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
+      // Check if the selected month matches the month from the selected date
+      if (selectedMonth === inputMonth) {
+        const weight = parseInt(document.getElementById('weight').value);
+        const date = selectedDate.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
 
-    // Update the weight data in the chart
-    weightChart.data.datasets[0].data[selectedMonth] = weight;
-    weightChart.data.labels[selectedMonth] = months[selectedMonth] + `(${date})`;
-    weightChart.update();
+        // Update the weight data in the chart
+        weightChart.data.datasets[0].data[selectedMonth] = weight;
+        weightChart.data.labels[selectedMonth] = months[selectedMonth] + `(${date})`;
+        weightChart.update();
 
-    // Save the updated weight data to localStorage
-    localStorage.setItem('weightData', JSON.stringify(weightChart.data.datasets[0].data));
-  } else {
-    // Create a pop-up for the error message
-    const popOutContainer = document.getElementById("popOutContainer");
-    const popOutContent = document.querySelector(".pop-out-content");
-    const closeButton = document.getElementById("closeButton");
-    popOutContainer.style.backgroundColor = "tomato";
+        // Save the updated weight data to localStorage
+        localStorage.setItem('weightData', JSON.stringify(weightChart.data.datasets[0].data));
+      } else {
+        // Create a pop-up for the error message
+        const popOutContainer = document.getElementById("popOutContainer");
+        const popOutContent = document.querySelector(".pop-out-content");
+        const closeButton = document.getElementById("closeButton");
+        popOutContainer.style.backgroundColor = "tomato";
 
 
-    popOutContent.innerHTML = "The selected day does not match the month. Please correct it";
+        popOutContent.innerHTML = "The selected day does not match the month. Please correct it";
 
-    popOutContainer.style.display = "block";
+        popOutContainer.style.display = "block";
 
-    closeButton.addEventListener("click", function () {
-      // When the close button is clicked
-      popOutContainer.style.display = "none";
-    });
+        closeButton.addEventListener("click", function () {
+          // When the close button is clicked
+          popOutContainer.style.display = "none";
+        });
 
-    window.addEventListener("click", function (event) {
-      // Close window when clicking outside of it
-      if (
-        event.target !== closeButton &&
-        !popOutContainer.contains(event.target)
-      ) {
-        popOutContainer.style.display = "none";
+        window.addEventListener("click", function (event) {
+          // Close window when clicking outside of it
+          if (
+            event.target !== closeButton &&
+            !popOutContainer.contains(event.target)
+          ) {
+            popOutContainer.style.display = "none";
+          }
+        });
+
       }
     });
-
-  }
-});
-
-</script>
+  </script>
   </main>
   <nav>
     <ul>
