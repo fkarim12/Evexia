@@ -103,6 +103,7 @@
   </nav>
 
   <script>
+/*
     // Function to populate the tables with food entries
     function displayFoodEntries(meal, tableId) {
       // Get the table element
@@ -129,6 +130,46 @@
         // Assign other nutritional data to respective cells
       });
     }
+*/
+
+    function displayFoodEntries(meal, tableId) {
+      const table = document.getElementById(tableId);
+      let foodEntries = JSON.parse(localStorage.getItem(meal)) || [];
+
+      table.innerHTML = ''; // Clear existing table content before repopulating
+
+      foodEntries.forEach((entry, index) => {
+        const row = table.insertRow();
+
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const deleteButtonCell = row.insertCell(2); // Cell for delete button
+
+        cell1.textContent = entry.foodName;
+        cell1.style.textAlign = 'left';
+
+        cell2.textContent = entry.calories + ' cals';
+        cell2.style.textAlign = 'right';
+
+        // Create a delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.style.textAlign = 'right';
+        deleteButton.classList.add('delete-button');
+
+        // Attach click event listener to the delete button
+        deleteButton.addEventListener('click', function () {
+          foodEntries.splice(index, 1); // Remove the selected entry from the array
+          localStorage.setItem(meal, JSON.stringify(foodEntries)); // Update localStorage
+          displayFoodEntries(meal, tableId); // Repopulate the table after deletion
+          updateTotalCalories(); // Update total calories after deletion
+        });
+
+        deleteButtonCell.appendChild(deleteButton);
+      });
+    }
+
+
 
     // Call the function for each meal table
     displayFoodEntries('breakfast', 'breakfastTable');
@@ -189,6 +230,8 @@
         netCell.textContent = netCalories;
       }
     }
+
+
 
     // Helper function to calculate total calories for a given meal
     function calculateTotalCalories(entries) {
