@@ -9,7 +9,7 @@
   </head>
   <body>
     <main>
-      <h1>Sleep Tracker</h1>
+      <h1>Weekly Sleep Tracker</h1>
       
       <div class="header1">
         <button class="learn-button" id="learnMoreButton">Learn More</button>
@@ -100,9 +100,25 @@
       sleepData.labels = parsedData.labels;
       sleepData.datasets[0].data = parsedData.datasets[0].data;
       sleepTrackerChart.update();
-    }
+    }else {
+    // If there's no stored data, initialize the chart with default data
+    initializeChartWithDefaultData();
+  }
 
   });
+
+  // Function to initialize the chart with default data
+function initializeChartWithDefaultData() {
+  // You can set default data here. For example:
+  sleepData.labels = daysOfWeek.slice(); // Days of the week
+  sleepData.datasets[0].data = [8, 7, 6, 7, 8, 6, 9]; // Default hours of sleep for each day
+
+  // Update the chart
+  sleepTrackerChart.update();
+
+  // Save the default data to localStorage
+  localStorage.setItem("sleepData", JSON.stringify(sleepData));
+}
 
   learnMoreButton.addEventListener("click", function () {
     //when button is clicked
@@ -128,10 +144,12 @@
   function resetSleepData() {
   // Reset the data array
   sleepData.datasets[0].data.fill(0);
+  // Reset the labels to the original days of the week
+  sleepData.labels = daysOfWeek.slice(); // Reset labels to just the days of the week
   // Update the chart
   sleepTrackerChart.update();
   // Clear the data from localStorage
-  localStorage.removeItem('sleepData');
+  localStorage.removeItem('sleepData'); 
 }
 
 // Event listener for the clear data button
@@ -143,7 +161,7 @@ document.getElementById('clearDataButton').addEventListener('click', function() 
 
   const sleepData = {
   // Initialize labels with days of the week and empty dates
-  labels: daysOfWeek.map(day => day + ' ()'), 
+  labels: daysOfWeek.slice(), // Simply use a copy of the daysOfWeek arrays
   datasets: [{
     label: 'Hours of Sleep',
     backgroundColor: 'rgba(0, 123, 255, 0.5)',
@@ -198,6 +216,8 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
 
   document.getElementById('sleepDataForm').addEventListener('submit', function(event) {
     event.preventDefault();
+
+
 
     const dayOfWeekSelect = document.getElementById('dayOfWeek');
     const dayIndex = parseInt(dayOfWeekSelect.value);
@@ -266,7 +286,8 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
   // Optional: Reset the form and chart for a new week
   function resetForNewWeek() {
     sleepData.datasets[0].data.fill(0); // Reset data
-    sleepTrackerChart.update();
+  sleepData.labels = daysOfWeek.slice(); // Reset labels
+  sleepTrackerChart.update();
   }
   // Call resetForNewWeek() to reset every new week
   
@@ -281,6 +302,10 @@ sleepTrackerChartContainer.style.marginTop = marginTopValue + 'px';
     <a href="./sleepTracker.html" class="active"><img src="sleep.jpg" alt="Sleep Tracker" class="nav-icon" /></a>
     <a href="./userProfile.html"><img src="profile.png" alt="User Profile" class="nav-icon" /></a>
   </ul>
+</nav>
+</body>
+</html>
+  
 </nav>
 </body>
 </html>
