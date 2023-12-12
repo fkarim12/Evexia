@@ -52,8 +52,8 @@ select {
   }
   
   .return-button {
-    padding: 15px 30px;
-    font-size: 20px;
+    padding: 10px 20px;
+    font-size: 15px;
     background-color: lightslategray;
     color: black;
     font-weight: bold;
@@ -75,7 +75,7 @@ select {
   }
   
   #foodForm.scrollable{
-    max-height: 420px;
+    max-height: 500px;
     overflow-y: auto;
   }
 

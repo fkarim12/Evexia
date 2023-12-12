@@ -12,7 +12,8 @@
   <body>
     <main>
       <div class="container">
-        <h1>Add Food</h1>
+        <h1 style="margin-bottom: -36.5px;">Add Food</h1>
+        
         <div class="header1">
           <button class="return-button" onclick="window.location.href='index.html'">Back</button>
         </div>
@@ -21,7 +22,7 @@
 
         <div id="container">
           <form id="foodForm" onsubmit="return validateForm()">
-            <label for="meal">Meal</label>
+            <label for="meal" style="margin-bottom: 5px;margin-top: 0px;">Meal</label>
             <select id="meal" name="meal" required>
                 <option value="breakfast">Breakfast</option>
                 <option value="lunch">Lunch</option>
@@ -29,29 +30,29 @@
                 <option value="snacks">Snacks and More</option>
             </select>
 
-            <label for="foodName">Food Name</label>
-            <input type="text" id="foodName" name="foodName" required onclick="showKeyboard(event, 'keyboardImage')">
+            <label for="foodName" style="margin-bottom: 5px;">Food Name</label>
+            <input type="text" id="foodName" name="foodName" required onclick="showKeyboard(event, 'keyboardImage')"style="margin-top: -3px;">
         
             <br>
         
-            <label for="calories">Calories</label>
-            <input type="number" id="calories" name="calories" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
+            <label for="calories" style="margin-bottom: 5px;">Calories</label>
+            <input type="number" id="calories" name="calories" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')" style="margin-top: -3px;">
         
             <br>
         
-            <label for="carbs">Carbohydrates (g)</label>
-            <input type="number" id="carbs" name="carbs" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
+            <label for="carbs" style="margin-bottom: 5px;">Carbohydrates (g)</label>
+            <input type="number" id="carbs" name="carbs" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')" style="margin-top: -3px;">
         
             <br>
 
-            <label for="proteins">Proteins (g)</label>
-            <input type="number" id="proteins" name="proteins" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
+            <label for="proteins" style="margin-bottom: 5px;">Proteins (g)</label>
+            <input type="number" id="proteins" name="proteins" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')" style="margin-top: -3px;">
             
             <br>
             
-            <label for="fats">Fats (g)</label>
+            <label for="fats" style="margin-bottom: 5px;">Fats (g)</label>
             <input type="number" id="fats" name="fats" required pattern="[0-9]+" onclick="showKeyboard(event, 'keyboardImage')">
-
+            
             <br><br>
         
             <div class="header1">
@@ -192,6 +193,5 @@
     }
 
     </script>
-
-      </body>
+  </body>
 </html>
